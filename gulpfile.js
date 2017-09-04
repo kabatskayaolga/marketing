@@ -22,7 +22,7 @@ gulp.task('styles', function() {
     gulp.src('./dev/sass/style.sass')
         .pipe(plumber())
         .pipe(sass({
-           // outputStyle: 'compressed'
+           outputStyle: 'compressed'
         }))
         .pipe(prefix('last 2 version'))
         .pipe(gulp.dest('./site/css/'))
@@ -36,7 +36,7 @@ gulp.task('templates', function() {
     gulp.src('./dev/pug/*.pug')
         .pipe(plumber())
         .pipe(pug({
-            pretty: true
+            // pretty: true
         }))
         .pipe(gulp.dest('./site/'))
         .pipe(connect.reload());
@@ -47,7 +47,10 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('scripts', function() {
-    gulp.src('./dev/js/*.js')
+    gulp.src([
+        './node_modules/jquery/dist/jquery.js',
+        './dev/js/*.js'
+        ])
         .pipe(plumber())
         .pipe(concat('script.js'))
         .pipe(uglify())
@@ -69,7 +72,7 @@ gulp.task('images', function() {
 // watcher
 gulp.task('watcher', function() {
     gulp.watch('pug/**/*.pug', {cwd:'./dev/'}, ['templates']);
-    gulp.watch('sass/*.sass', {cwd:'./dev/'}, ['styles']);
+    gulp.watch('sass/**/*.sass', {cwd:'./dev/'}, ['styles']);
     gulp.watch('js/*.js', {cwd:'./dev/'}, ['scripts']);
     gulp.watch('images/**/*.{png,jpg,jpeg,gif,svg}', {cwd:'./dev/'}, ['images']);
 });

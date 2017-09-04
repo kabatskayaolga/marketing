@@ -12,7 +12,8 @@
 			},
 			{
 				title: 'Наша команда',
-				href: '#command'
+				href: '#command',
+				class: 'header_nav__link_hidden'
 			},
 			{
 				title: 'Наши преимущества',
@@ -20,7 +21,8 @@
 			},
 			{
 				title: 'Как мы работаем',
-				href: '#how_we_are_working'
+				href: '#how_we_are_working',
+				class: 'header_nav__link_hidden'
 			},
 			
 			{
@@ -33,12 +35,25 @@
 
 	//- logo
 	//- a.header_logo.header_logo_link
-	img.header_logo__image(src="images/logo.png", alt= header_logo_title, title=header_logo_title)
+	img.header_logo__image(
+		src="images/logo.png", 
+		alt= header_logo_title, 
+		title=header_logo_title)
 
 	//- nav-menu
 	.header_nav
 		each value in header_nav_link
-			a.header_nav__link(href=value.href, title=value.title)= value.title
-	a.button
-		i.ico.phone-call
-		|  Заказать звонок
+			if value.class
+				a.header_nav__link(href=value.href, title=value.title, class= value.class)= value.title
+			else
+				a.header_nav__link(href=value.href, title=value.title)= value.title
+		//- a.button.button-close x
+	div
+		a.button.button_notxt.button-menu.open_menu
+			i.ico.menu
+			|  Меню
+		a.button.button_notxt.button-phone
+			i.ico.phone-call
+			|  Заказать звонок
+
+.flex-container.course_block

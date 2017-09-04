@@ -1,5 +1,31 @@
+.header
+	@media(max-width: 1030px)
+		flex-wrap: wrap
+
+.header_logo__image
+	@media(max-width: 600px)
+		width: 250px
+	@media(max-width: 400px)
+		width: 190px
 
 .header_nav
+	// transition: background-color 0s
+	@media(max-width: 1040px)
+		width: 100%
+		height: 100%
+		position: fixed
+		background: rgba(0, 0, 0, 0.91)
+		text-align: center
+		top: 0
+		left: 0
+		display: none
+		flex-direction: column
+		align-items: center
+		justify-content: space-around
+		font-weight: 600
+		font-size: 1.3em
+
+
 	&__link
 		margin-right: 20px
 		color: black
@@ -10,3 +36,12 @@
 		&:hover
 			color: $activeColor
 			border-bottom: 2px dotted
+		@media(max-width: 1040px)
+			color: white
+			text-transform: uppercase
+
+	.header_nav__link_hidden
+		@media(max-width: 1400px)
+			display: none
+		@media(max-width: 1040px)
+			display: inline

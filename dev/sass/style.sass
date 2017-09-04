@@ -51,14 +51,19 @@ h1
 		font-size: 4em
 	@media(max-width: 1030px)
 		font-size: 2.5em
-	@media(max-width: 1030px)
-		font-size: 2.5em
+	@media(max-width: 700px)
+		font-size: 2.2em
+		line-height: 1.3em
+		font-weight: 900
 
 h5
 	font-weight: normal
 	font-size: 1.1em
 	line-height: 2em
-	margin-bottom: 3em 
+	margin-bottom: 3em
+	@media(max-width: 700px)
+		line-height: 1.5em
+		margin-bottom: 1.5em
 
 // elements
 
@@ -71,6 +76,35 @@ h5
 	&:hover
 		background-color: $activeColor
 		color: white
+	@media(max-width: 700px)
+		padding: 0.6em 1.5em
+	&-menu
+		margin-right: 5px
+		display: none
+		padding: 0.6em
+		@media(max-width: 1040px)
+			display: inline-block
+		@media(max-width: 400px)
+			margin-right: -10px
+	&_notxt
+		@media(max-width: 700px)
+			font-size: 0
+			display: inline-block
+			padding: 10px!important
+			border-radius: 25px
+		@media(max-width: 400px)
+			transform: scale(0.7)
+	&-close
+		font-weight: initial
+		padding: 0.4em 0.65em
+		line-height: 1em
+		position: absolute
+		top: 1em
+		right: 1em
+		display: none
+		@media(max-width: 1040px)
+			display: block
+
 
 @import 'includes/icons'
 @import 'includes/header'
@@ -82,13 +116,27 @@ h5
 	min-height: 100vh
 	background-image: url(../images/juice.png), url(../images/background-header.png)
 	background-repeat: no-repeat
-	background-position: 90%, 0 -200px
-	background-size: 900px, 100% 
-
+	background-position: 95%, 0 -200px
+	background-size: 1000px, 100% 
+	@media(max-width: 1300px)
+		background-size: 800px, 100%
+		background-position: 90%, 0 -100px
+	@media(max-width: 1040px)
+		background-size: 700px, 100%
+		background-position: 400px, 0 -100px
+	@media(max-width: 750px)
+		background-size: 600px, 100%
+		background-position: 300px, 0 0px
+	@media(max-width: 700px)
+		background-size: 600px, 100%
+		background-position: 250px, 0 0px
+	@media(max-width: 600px)
+		background-size: 600px, 800px
+		background-position: 150px, 0 0px
 
 	.header_content
 		max-width: 50%
-		margin-top: -15px
+		// margin-top: -15px
 		@media(max-width: 900px)
 			max-width: 70%
 		@media(max-width: 600px)
