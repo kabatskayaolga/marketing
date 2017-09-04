@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic");
+* {
+  margin: 0;
+  padding: 0;
+  transition: border 0.4s, color 0.4s, background-color 0.4s; }
+
+html, body {
+  font-family: 'Istok Web', 'Helvetica', sans-serif;
+  padding: 0; }
+
+a {
+  color: #f44336;
+  text-decoration: none;
+  border-bottom: 2px dotted;
+  border-radius: 3px; }
+  a:hover {
+    color: #f77066; }
+
+.wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 15px 0;
+  width: 100%; }
+
+.flex-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center; }
+  .flex-container.flex-columns {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-align: initial;
+        align-items: initial; }
+
+h1 {
+  font-size: 5em;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  margin: 0 0 0.4em -0.1em; }
+  @media (max-width: 1600px) {
+    h1 {
+      font-size: 4em; } }
+  @media (max-width: 1300px) {
+    h1 {
+      font-size: 4em; } }
+  @media (max-width: 1030px) {
+    h1 {
+      font-size: 2.5em; } }
+  @media (max-width: 1030px) {
+    h1 {
+      font-size: 2.5em; } }
+
+h5 {
+  font-weight: normal;
+  font-size: 1.1em;
+  line-height: 2em;
+  margin-bottom: 3em; }
+
+.button {
+  border: 2px solid #f44336;
+  border-radius: 2em;
+  padding: 0.6em 3em;
+  font-weight: 600;
+  cursor: pointer; }
+  .button:hover {
+    background-color: #f44336;
+    color: white; }
+
+.ico {
+  display: inline-block;
+  background: url("../images/ico.png") no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+  vertical-align: middle; }
+  .ico.domain-registration {
+    background-position: -0px -0px;
+    width: 100px;
+    height: 90px; }
+  .ico.idea {
+    background-position: -0px -90px;
+    width: 100px;
+    height: 100px; }
+  .ico.telephone {
+    background-position: -0px -190px;
+    width: 100px;
+    height: 100px; }
+  .ico.domain-registration2 {
+    background-position: -0px -290px;
+    width: 98px;
+    height: 81px; }
+  .ico.stick-man {
+    background-position: -0px -371px;
+    width: 98px;
+    height: 87px; }
+  .ico.statement {
+    background-position: -0px -458px;
+    width: 97px;
+    height: 87px; }
+  .ico.bar-chart {
+    background-position: -0px -545px;
+    width: 96px;
+    height: 100px; }
+  .ico.stopwatch {
+    background-position: -0px -645px;
+    width: 96px;
+    height: 100px; }
+  .ico.rocket-launch {
+    background-position: -0px -745px;
+    width: 93px;
+    height: 93px; }
+  .ico.magnifying-glass {
+    background-position: -0px -838px;
+    width: 90px;
+    height: 90px; }
+  .ico.cube {
+    background-position: -0px -928px;
+    width: 84px;
+    height: 100px; }
+  .ico.document {
+    background-position: -0px -1028px;
+    width: 82px;
+    height: 84px; }
+  .ico.facebook {
+    background-position: -0px -1112px;
+    width: 30px;
+    height: 30px; }
+  .ico.google {
+    background-position: -30px -1112px;
+    width: 30px;
+    height: 30px; }
+  .ico.instagram {
+    background-position: -60px -1112px;
+    width: 30px;
+    height: 30px; }
+  .ico.linkedin {
+    background-position: -0px -1142px;
+    width: 30px;
+    height: 30px; }
+  .ico.twitter {
+    background-position: -30px -1142px;
+    width: 30px;
+    height: 30px; }
+  .ico.phone-call {
+    background-position: -60px -1142px;
+    width: 25px;
+    height: 25px; }
+  .ico.arrow {
+    background-position: -60px -1167px;
+    width: 21px;
+    height: 13px; }
+  .ico.phone-call-hover {
+    background-position: -0px -1180px;
+    width: 25px;
+    height: 25px; }
+
+.button-phone:hover .phone-call {
+  background-position: -0px -1180px;
+  width: 25px;
+  height: 25px; }
+
+.header_nav__link {
+  margin-right: 20px;
+  color: black;
+  border-bottom: 2px dotted transparent;
+  font-size: 1.1em; }
+  .header_nav__link:last-child {
+    margin-right: 0; }
+  .header_nav__link:hover {
+    color: #f44336;
+    border-bottom: 2px dotted; }
+
+.head_block {
+  min-height: 100vh;
+  background-image: url(../images/juice.png), url(../images/background-header.png);
+  background-repeat: no-repeat;
+  background-position: 90%, 0 -200px;
+  background-size: 900px, 100%; }
+  .head_block .header_content {
+    max-width: 50%;
+    margin-top: -15px; }
+    @media (max-width: 900px) {
+      .head_block .header_content {
+        max-width: 70%; } }
+    @media (max-width: 600px) {
+      .head_block .header_content {
+        max-width: 100%; } }

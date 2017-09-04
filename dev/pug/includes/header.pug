@@ -1,0 +1,44 @@
+-
+	var
+		header_logo_title = 'Fresh Generation Marketing Service',
+		header_nav_link = [
+			{
+				title: 'Услуги',
+				href: '#services'
+			},
+			{
+				title: 'Портфолио',
+				href: '#portfolio'
+			},
+			{
+				title: 'Наша команда',
+				href: '#command'
+			},
+			{
+				title: 'Наши преимущества',
+				href: '#advantages'
+			},
+			{
+				title: 'Как мы работаем',
+				href: '#how_we_are_working'
+			},
+			
+			{
+				title: 'Контакты',
+				href: '#contacts'
+			}
+		]
+
+.header.flex-container
+
+	//- logo
+	//- a.header_logo.header_logo_link
+	img.header_logo__image(src="images/logo.png", alt= header_logo_title, title=header_logo_title)
+
+	//- nav-menu
+	.header_nav
+		each value in header_nav_link
+			a.header_nav__link(href=value.href, title=value.title)= value.title
+	a.button
+		i.ico.phone-call
+		|  Заказать звонок
