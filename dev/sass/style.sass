@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic')
-
+@import '../assets/magnific-popup'
 $activeColor: #f44336
 
 
 *
 	margin: 0
 	padding: 0
-	transition: border 0.4s, color 0.4s, background-color 0.4s
+	transition: transform 0.4s, border 0.4s, color 0.4s, background-color 0.4s,  background 0.4s
 
 html,body
 	font-family: 'Istok Web', 'Helvetica', sans-serif
@@ -22,6 +22,71 @@ a
 	border-radius: 3px
 	&:hover
 		color: lighten($activeColor, 10%)
+		.ico
+			transform: scale(1)
+p
+	margin-bottom: 15px
+	font-size: 1.1em
+
+
+img
+	vertical-align: middle
+
+ul
+	padding-left: 20px
+	border-left: 1px solid #c5c5c5
+	font-size: 1.1em
+	li
+		list-style-type: none
+		margin-top: 10px
+		position: relative
+
+		&:before
+			position: absolute
+			content: ''
+			background-color: #c5c5c5
+			width: 15px
+			height: 15px
+			left: -28px
+			top: 3px
+			display: block
+			border-radius: 25px
+		&:hover
+			&:before
+				border: 1px solid #c5c5c5
+				background-color: $activeColor
+			ul
+				li
+					&:before
+						background-color: #c5c5c5
+					&:after
+						background-color: $activeColor
+		ul
+			border: none
+			li
+				&:before
+					width: 30px
+					height: 1px
+					left: -41px
+					top: 10px
+					background-color: #c5c5c5
+				
+				&:after
+					position: absolute
+					content: ''
+					background-color: #c5c5c5
+					width: 5px
+					height: 5px
+					left: -15px
+					top: 8px
+					display: block
+					border-radius: 25px
+				&:hover
+					&:before
+						background-color: #c5c5c5!important
+						border: none
+
+
 
 // grids
 .wrapper
@@ -38,6 +103,29 @@ a
 	&.flex-columns
 		flex-wrap: wrap
 		align-items: initial
+	&__nowrap
+		flex-wrap: nowrap
+
+	.container-1-3
+		width: 33.33%
+		align-items: start
+		@media(max-width: 1040px)
+			width: 50%
+		@media(max-width: 700px)
+			width: 100%
+	.container-2-3
+		width: 66.66%
+		align-items: start
+		@media(max-width: 1040px)
+			flex-wrap: wrap
+			width: 50%
+		@media(max-width: 700px)
+			width: 100%
+	.container-1-2
+		width: 50%
+		align-items: start
+		@media(max-width: 1040px)
+			width: 100%
 		
 
 // titles
@@ -58,6 +146,19 @@ h1
 		line-height: 1.3em
 		font-weight: 900
 
+h2
+	font-size: 3em
+	text-transform: uppercase
+	text-align: center
+	color: $activeColor
+	span
+		border-bottom: 0.1em dotted
+
+	@media(max-width: 1030px)
+		font-size: 2.3em
+	@media(max-width: 700px)
+		font-size: 1.8em
+
 h5
 	font-weight: normal
 	font-size: 1.1em
@@ -75,9 +176,19 @@ h5
 	padding: 0.6em 3em
 	font-weight: 600
 	cursor: pointer
+	display: inline-block
+	margin-top: 10px
+	text-align: center
+	
+	&.inner,
 	&:hover
 		background-color: $activeColor
 		color: white
+	&.inner
+		&:hover
+			border: 2px solid $activeColor
+			background-color: transparent
+			color: $activeColor
 	@media(max-width: 700px)
 		padding: 0.6em 1.5em
 	&-menu
@@ -98,7 +209,7 @@ h5
 			transform: scale(0.7)
 	&-close
 		font-weight: initial
-		padding: 0.4em 0.65em
+		padding: 0.2em 0.45em
 		line-height: 1em
 		position: absolute
 		top: 1em
@@ -106,6 +217,9 @@ h5
 		display: none
 		@media(max-width: 1040px)
 			display: block
+
+	.ico
+		transition: background-image 0s
 
 
 @import 'includes/icons'
@@ -143,3 +257,126 @@ h5
 			max-width: 70%
 		@media(max-width: 600px)
 			max-width: 100%
+
+
+
+
+#services
+	.services_nav
+		text-align: center
+		&__link
+			text-transform: uppercase
+			font-size: 2em
+			font-weight: 600
+			margin: 0.2em 0.6em
+			display: inline-block
+			border-bottom: none
+			color: black
+			border-bottom: 2px dotted transparent
+			&.active,
+			&:hover
+				color: $activeColor
+				border-bottom: 2px dotted $activeColor
+			&.active
+				position: relative
+				&:after
+					position: absolute
+					display: block
+					width: 50px
+					height: 50px
+					background-color: #e8e8e8
+					content: ''
+					z-index: -1
+					transform: rotate(45deg) translateX(-50%)
+					bottom: -103px
+					left: 50%
+					@media(max-width: 640px)
+						content: none
+
+			@media(max-width: 1200px)
+				font-size: 1.45em
+			@media(max-width: 930px)
+				font-size: 1.2em
+			@media(max-width: 780px)
+				font-size: 1em
+
+
+
+	.services_blocks
+		// max-width: 1200px
+		margin: 50px auto 0
+
+		.services_block
+			align-items: flex-start
+			display: none
+			background-color: #e8e8e8
+			flex-wrap: wrap
+			border: 2px solid #e8e8e8
+
+			&__item_image
+				overflow: hidden
+				img
+					height: 425px
+					@media(max-width: 700px)
+						height: 250px
+			&__item_about,
+			&__item_services
+				padding: 30px
+
+			&__item_services
+				@media(max-width: 700px)
+					margin-top: -30px
+
+			&.active
+				display: flex
+
+			&__hidden
+				@media(max-width: 1040px) and (min-width: 700px)
+					display: none
+
+
+#portfolio
+	.portfolio_blocks
+		margin-top: 15px
+		background-color: lighten($activeColor, 10%)
+		@media (max-width:1600px)
+			flex-wrap: wrap
+		a.portfolio_block
+			border: 5px solid lighten($activeColor, 10%)
+			height: 450px
+			overflow-y: hidden
+			box-sizing: border-box
+			position: relative
+			@media (max-width:1600px)
+				height: initial
+				max-height: 400px
+				&:nth-child(2n-1)
+					width: 22%
+				&:nth-child(2n)
+					width: 28%
+				&:nth-child(6)
+					width: 56%
+			@media (max-width:900px)
+				height: initial
+				max-height: 400px
+				&:nth-child(2n-1)
+					width: 50%
+				&:nth-child(2n)
+					width: 50%
+				&:nth-child(6)
+					width: 50%
+				&:last-child
+					display: none
+			@media (max-width:500px)
+				max-height: 300px
+			img
+				width: 100%
+		.over_block
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			background-color: rgba(244, 67, 54, 0.8)
+.mfp-counter
+	display: none

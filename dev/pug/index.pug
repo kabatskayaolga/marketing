@@ -20,6 +20,196 @@ block content
 				a.button Ознакомиться с прайсом
 
 
+	-
+		var
+			services_navigation = [
+				{
+					title: 'Продвижение',
+					link: 'promotion',
+					img: 'images/promotion.jpg',
+					about: '<p>Подбираем самые эффективные методы в зависимости от ваших целей.</p>' +
+						'<p>Настраиваем кратко- и долгосрочные кампании</p>'+
+						'<p>Экономия средств за счет большей эффективности</p>',
+					services: 
+						'<li>Контекстная реклама</li>' +
+						'<li>SEO</li>' +
+						'<li>Соцсети' +
+							'<ul>' +
+								'<li>Facebook</li>' +
+								'<li>Instagram</li>' +
+								'<li>ВКонтакте</li>' +
+							'</ul></li>' +
+						'<li>PR в Сети</li>' +
+						'<li>Медийная реклама</li>' +
+						'<li>Email маркетинг</li>',
+					active: 'active'
+				},
+				{
+					title: 'Разработка',
+					link: 'development',
+					img: 'images/develop.jpg',
+					about: '<p>Современный веб-сайт с хорошим юзабилити — залог успеха</p>' +
+						'<p>Минимальные сроки разработки</p>'+
+						'<p>Удобство и гибкость администрирования</p>',
+					services: 
+						'<li>Создание лендингов</li>' +
+						'<li>Сайт-визитка</li>' +
+						'<li>Установка и настройка <ul>' +
+							'<li>WordPress</li>' +
+							'<li>Joomla</li>' +
+							'<li>Drupal</li>' +
+							'<li>PrestaShop</li>' +
+							'<li>OpenCart</li>' +
+							'<li>Google Analytics</li>' +
+							'<li>Яндекс Метрика</li>' +
+						'</ul></li>'
+				},
+				{
+					title: 'Дизайн',
+					link: 'design',
+					img: 'images/design.jpg',
+					about: 
+						'<p>Красивый и понятный пользователю дизайн сайтов</p>' +
+						'<p>Выдержка в фирменном стиле и гармония с логотипом</p>' +
+						'<p>Выбор из лучших вариантов</p>' ,
+					services: 
+						'<li>Дизайн/редизайн сайтов</li>' +
+						'<li>Баннеры</li>' +
+						'<li>Страницы в соцсетях</li>' +
+						'<li>Полиграфический</li>' +
+						'<li>Бренд-бук, фирменный стиль</li>' +
+						'<li>Логотипы</li>'
+
+				},
+				{
+					title: 'Локализация',
+					link: 'localization',
+					img: 'images/localization.jpg',
+					about: 
+						'<p>Расширяйте круг ваших клиентов за счет перевода сайтов на другие языки!</p>'+
+						'<p>Английский, украинский, китайский, немецкий, итальянский, польский, турецкий - любой язык на ваш выбор!</p>',
+					services: 
+						'<li>Локализация cайтов</li>' +
+						'<li>Локализация полиграфии</li>' +
+						'<li>Локализация презентаций</li>'
+				},
+				{
+					title: 'Аудит',
+					link: 'audit',
+					img: 'images/audit.jpg',
+					about: 
+						'<p>Комплексный или частичный аудит вашего сайта или рекламной кампании</p>' +
+						'<p>Рекомендации по улучшению</p>' +
+						'<p>Работы по устранению ошибок и недочетов</p>',
+
+					services: 
+						'<li>Аудит SEO-продвижения</li>' +
+						'<li>Аудит контекстной рекламы</li>' +
+						'<li>Юзабилити аудит</li>' +
+						'<li>Маркетинговый аудит</li>'
+
+				},
+			]
+
+	#services
+		.wrapper
+			.services_nav
+				each value in services_navigation
+					if value.active
+						a.services_nav__link(href='#'+value.link, title=value.title, class="active")= value.title
+					else
+						a.services_nav__link(href='#'+value.link, title=value.title)= value.title
+			.services_blocks
+				each val in services_navigation
+					if val.active
+						.services_block.flex-container(id=val.link, class="active")
+							.services_block__item_image.container-1-3
+								image(src= val.img)
+							div.flex-container.container-2-3
+								.services_block__item_about.container-1-2 !{val.about}
+									a(href="#portfolio") Ознакомиться с портфолио 
+										i.ico.arrow
+									br
+									br
+									a.button Заполнить бриф на разработку
+
+									a.button.inner Расчитать стоимость разработки
+
+								.services_block__item_services.container-1-2.services_block__hidden
+									ul !{val.services}
+										//- each rtyry in val.services
+					
+					else
+						.services_block.flex-container(id=val.link)
+							.services_block__item_image.container-1-3
+								image(src= val.img)
+							div.flex-container.container-2-3
+								.services_block__item_about.container-1-2 !{val.about}
+									a(href="#portfolio") Ознакомиться с портфолио 
+										i.ico.arrow
+									br
+									br
+									a.button Заполнить бриф на разработку
+
+									a.button.inner Расчитать стоимость разработки
+
+								.services_block__item_services.container-1-2.services_block__hidden
+									ul !{val.services}
+										//- each rtyry in val.services
+					
+	-
+		var
+			portfolio = [
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/europe_antra_ua.png',
+				},
+				{
+					title: 'imramor.com',
+					link: 'imramor.com',
+					img: 'images/portfolio/imramor_com.png',
+				},
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/irina-petra_com_novayaya.png',
+				},
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/landings_antra_ua_panteleychuk2in1.png',
+				},
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/lawsolution_com_ua.png',
+				},
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/seminarna_ru_about.png',
+				},
+				{
+					title: 'europe.antra.ua',
+					link: 'europe.antra.ua',
+					img: 'images/portfolio/study_antra_ua.png',
+				},
+
+
+			]
+
+	#portfolio
+		.wrapper
+			h2 
+				span Наше портфолио
+
+		.portfolio_blocks.flex-container.flex-container__nowrap
+			each val in portfolio
+				a.portfolio_block(href= val.img)
+					img(src= val.img, alt=val.link).mmm 
+
+				
+
 	include includes/footer
 	script(src='js/script.js')
-		

@@ -6,7 +6,7 @@ var connect = require('gulp-connect-multi')();
 
 gulp.task('connect', connect.server({
     host: '127.0.0.1',
-    root: ['site'],
+    root: ['docs'],
     port: 9090,
     livereload: true,
     open: {
@@ -25,7 +25,7 @@ gulp.task('styles', function() {
            outputStyle: 'compressed'
         }))
         .pipe(prefix('last 2 version'))
-        .pipe(gulp.dest('./site/css/'))
+        .pipe(gulp.dest('./docs/css/'))
         .pipe(connect.reload());
 });
 
@@ -38,7 +38,7 @@ gulp.task('templates', function() {
         .pipe(pug({
             // pretty: true
         }))
-        .pipe(gulp.dest('./site/'))
+        .pipe(gulp.dest('./docs/'))
         .pipe(connect.reload());
 });
 
@@ -49,12 +49,15 @@ var uglify = require('gulp-uglify');
 gulp.task('scripts', function() {
     gulp.src([
         './node_modules/jquery/dist/jquery.js',
+        // './dev/js/magnific-popup'
+
+        // 'https://github.com/dimsemenov/Magnific-Popup/blob/master/dist/jquery.magnific-popup.js',
         './dev/js/*.js'
         ])
         .pipe(plumber())
         .pipe(concat('script.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./site/js/'))
+        .pipe(gulp.dest('./docs/js/'))
         .pipe(connect.reload());
 });
 
@@ -65,7 +68,7 @@ var imagemin = require('gulp-imagemin');
 gulp.task('images', function() {
     gulp.src('./dev/images/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./site/images'))
+        .pipe(gulp.dest('./docs/images'))
         .pipe(connect.reload());
 });
 
