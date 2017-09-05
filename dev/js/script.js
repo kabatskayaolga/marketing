@@ -71,7 +71,7 @@ $(document).ready(function(){
 
 $('.portfolio_block').hover(function(){
 	console.log(1);
-	var appendValue = "<div class='over_block'><i class='ico magnifying-glass></i></div>";
+	var appendValue = "<div class='over_block'><span class='ico magnifying-glass></span></div>";
 	$(this).append(appendValue);
 }, 
 function(){
