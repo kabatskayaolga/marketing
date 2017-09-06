@@ -209,7 +209,58 @@ block content
 				a.portfolio_block(href= val.img)
 					img(src= val.img, alt=val.link).mmm 
 
+	-
+		var
+			command = [
 				
+				{
+					img: 'images/command/yulia.jpg',
+					name: 'Юлия Гадзиева',
+					who_is: 'Маркетолог',
+				},
+				{
+					img: 'images/command/olya.jpg',
+					name: 'Ольга Кабацкая',
+					who_is: 'Дизайн, Front-End',
+				},
+				{
+					img: 'images/command/misha.jpg',
+					name: 'Михаил Шелудько',
+					who_is: 'Руководитель',
+				},
+				{
+					img: 'images/command/denis.jpg',
+					name: 'Денис Гришин',
+					who_is: 'Маркетолог',
+				},
+				{
+					img: 'images/command/radislav.jpg',
+					name: 'Радислав Маканов',
+					who_is: 'Дизайн, Front-End',
+				},
+				{
+					img: 'images/command/marina.jpg',
+					name: 'Марина Свичкарь',
+					who_is: 'Менеджер по продажам',
+				}
+			]
+
+
+	#command
+		.wrapper
+			h2 Наша команда
+			.command_slider__wrapper
+				.button_slider.button_prew
+				.command_slider
+					
+					each val in command
+						.human
+							img.command_wrap__img(src= val.img, alt= val.name)
+							.hidden-info
+								h4= val.name
+								span.profession= val.who_is
+				.button_slider.button_next
+
 
 	include includes/footer
 	script(src='js/script.js')

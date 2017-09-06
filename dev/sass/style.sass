@@ -1,5 +1,9 @@
+@import '../assets/slick'
+
 @import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic')
 @import '../assets/magnific-popup'
+
+
 $activeColor: #f44336
 
 
@@ -159,11 +163,20 @@ h2
 	@media(max-width: 700px)
 		font-size: 1.8em
 
+h4
+	font-size: 1.9em
+	text-transform: uppercase
+	font-weight: normal
+	margin-top: 0.3em
+	@media(max-width: 700px)
+		font-size: 1.5em
+		margin-bottom: 0.3em
+
 h5
 	font-weight: normal
 	font-size: 1.1em
 	line-height: 2em
-	margin-bottom: 3em
+	margin-bottom: 2em
 	@media(max-width: 700px)
 		line-height: 1.5em
 		margin-bottom: 1.5em
@@ -383,3 +396,166 @@ h5
 			background-repeat: no-repeat
 .mfp-counter
 	display: none
+
+#command
+	.command_slider__wrapper
+		position: relative
+		.command_slider
+			position: relative
+			&:after
+				width: 100%
+				height: 2px
+				content: ''
+				background-color: $activeColor
+				position: absolute
+				top: 180px
+				z-index: -1
+				left: 0
+				@media (max-width: 1700px) and (min-width: 1450px)
+					top: 130px
+				@media (max-width: 1450px) and (min-width: 1200px)
+					top: 110px
+				@media (max-width: 1200px) and (min-width: 990px)
+					top: 140px
+				@media (max-width: 990px)
+					top: 110px
+			
+			h4
+				@media (max-width: 1700px) and (min-width: 700px)
+					position: relative
+					margin-left: -50%
+					margin-right: -50%
+
+
+			.human
+				text-align: center
+				padding-bottom: 20px
+				outline: none
+				cursor: move
+				.command_wrap__img
+					width: 300px
+					height: 300px
+					border-radius: 50%
+					border: 3px solid $activeColor
+					display: initial
+					@media (max-width: 1700px) and (min-width: 1450px)
+						width: 250px
+						height: 250px
+					@media (max-width: 1450px) and (min-width: 1200px)
+						width: 200px
+						height: 200px
+					@media (max-width: 1200px) and (min-width: 990px)
+						width: 250px
+						height: 250px
+					@media (max-width: 990px) 
+						width: 200px
+						height: 200px
+
+				.profession
+					background-color: $activeColor
+					padding: 5px 15px
+					border-radius: 25px
+					font-weight: 600
+					color: white
+				@media (min-width: 700px) 
+					.hidden-info
+						display: none
+			@media (min-width: 1200px)
+				.slick-active
+					&.slick-current
+						transform: scale(0.6) translateX(80px)
+						&+.slick-active
+							transform: scale(0.8)
+							&+.slick-active
+								.hidden-info
+									display: block
+								&+.slick-active
+									transform: scale(0.8)
+									&+.slick-active
+										transform: scale(0.6) translateX(-80px)
+			@media (max-width: 1200px) and (min-width: 900px)
+				.slick-active
+					&.slick-current
+						transform: scale(0.75) translateX(80px)
+						&+.slick-active
+							.hidden-info
+								display: block
+							&+.slick-active
+								transform: scale(0.75) translateX(-80px)
+			@media (max-width: 1200px) and (min-width: 700px)
+				.slick-active
+					&.slick-current
+						transform: scale(0.75) translateX(30px)
+						&+.slick-active
+							.hidden-info
+								display: block
+							&+.slick-active
+								transform: scale(0.75) translateX(-30px)
+			@media (max-width: 700px) and (min-width: 600px)
+				.slick-active
+					&.slick-current
+						transform: translateX(20px)
+						&+.slick-active
+							transform: translateX(-20px)
+			@media (max-width: 600px) and (min-width: 532px)
+				.slick-active
+					&.slick-current
+						transform: translateX(10px)
+						.command_wrap__img
+							transform: scale(0.8)
+						&+.slick-active
+							transform: translateX(-10px)
+							.command_wrap__img
+								transform: scale(0.8)
+
+
+.button_after__prew
+	background-color: red
+	content: ''
+	display: block
+	width: 40px
+	height: 2px
+
+.button_slider
+	width: 50px
+	height: 50px
+	cursor: pointer
+	position: absolute
+	top: 155px
+	z-index: 1
+	@media (max-width: 1700px) and (min-width: 1450px)
+		top: 105px
+	@media (max-width: 1450px) and (min-width: 1200px)
+		top: 85px
+	@media (max-width: 1200px) and (min-width: 990px)
+		top: 115px
+	@media (max-width: 990px) 
+		top: 85px
+
+	&.slick-disabled
+		display: none!important
+
+	&.button_prew
+		left: 0
+		&:before
+			@extend .button_after__prew
+			transform: rotate(-45deg) translateY(2px) translateX(-12px)
+		&:after
+			@extend .button_after__prew
+			transform: rotate(45deg) translateY(30px) translateX(20px)
+		&:hover
+			transform: scale(1.3) translateX(5px)
+
+
+	&.button_next
+		right: 0
+		transform: rotate(180deg)
+		&:before
+			@extend .button_after__prew
+			transform: rotate(-45deg) translateY(2px) translateX(-12px)
+		&:after
+			@extend .button_after__prew
+			transform: rotate(45deg) translateY(30px) translateX(20px)
+		&:hover
+			transform: scale(1.3) translateX(-5px) rotate(180deg)
+ 

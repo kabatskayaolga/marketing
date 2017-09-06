@@ -19,7 +19,9 @@ var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 
 gulp.task('styles', function() {
-    gulp.src('./dev/sass/style.sass')
+    gulp.src([
+            './dev/sass/style.sass'
+        ])
         .pipe(plumber())
         .pipe(sass({
            outputStyle: 'compressed'
@@ -33,7 +35,9 @@ gulp.task('styles', function() {
 var pug = require('gulp-pug');
 
 gulp.task('templates', function() {
-    gulp.src('./dev/pug/*.pug')
+    gulp.src([
+        './dev/pug/*.pug'
+        ])
         .pipe(plumber())
         .pipe(pug({
             // pretty: true
@@ -49,7 +53,7 @@ var uglify = require('gulp-uglify');
 gulp.task('scripts', function() {
     gulp.src([
         './node_modules/jquery/dist/jquery.js',
-        // './dev/js/magnific-popup'
+        './node_modules/slick-carousel/slick/slick.min.js',
 
         // 'https://github.com/dimsemenov/Magnific-Popup/blob/master/dist/jquery.magnific-popup.js',
         './dev/js/*.js'

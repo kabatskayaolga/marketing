@@ -90,4 +90,39 @@ $('.portfolio_blocks').each(function() { // the containers for all your gallerie
     });
 });
 
+$(document).ready(function(){
+  $('.command_slider').slick({
 
+		slidesToShow: 5,
+		// centerMode: true,
+		prevArrow: $('.button_slider.button_prew'),
+		nextArrow: $('.button_slider.button_next'),
+		infinite: true,
+		responsive: [
+	    {
+	      breakpoint:1200,
+	      settings: {
+	        slidesToShow: 3,
+	      }
+	    },
+	    {
+	      breakpoint: 700,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 2
+	      }
+	    },
+	    {
+	      breakpoint: 532,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
+		
+  });
+});
