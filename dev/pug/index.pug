@@ -248,7 +248,8 @@ block content
 
 	#command
 		.wrapper
-			h2 Наша команда
+			h2
+				span Наша команда
 			.command_slider__wrapper
 				.button_slider.button_prew
 				.command_slider
@@ -260,6 +261,57 @@ block content
 								h4= val.name
 								span.profession= val.who_is
 				.button_slider.button_next
+	-
+		var
+			advantages = [
+				{
+					icon: 'idea',
+					text: 'Наша команда всегда в курсе новинок'
+				},
+				{
+					icon: 'stopwatch',
+					text: 'Мы всегда вовремя сдаем проекты'
+				},
+				{
+					icon: 'domain-registration',
+					text: 'Наши сайты уже приносят нашим клиентам прибыль'
+				},
+				{
+					icon: 'bar-chart',
+					text: 'Наши маркетинговые решения уже увеличили продажи'
+				},
+				{
+					icon: 'telephone',
+					text: 'Мы предоставляем клиенту техподдержку и инструкции '
+				},
+
+				{
+					icon: 'cube',
+					text: 'Мы решаем задачи бизнеса'
+				}
+			]
+	#advantages
+		.wrapper
+			h2
+				span Наши преимущества
+			.flex-container.flex_6_columns
+				each val in advantages
+					.advantage
+						.advantage_align
+							i(class='ico '+val.icon)
+						h5= val.text
+	//- #how_we_are_working
+	//- 	.wrapper
+	//- 		h2
+	//- 			span Как мы работаем?
+	//- 		.flex-container.flex_6_columns
+	//- 			each val in advantages
+	//- 				.advantage
+	//- 					.advantage_align
+	//- 						i(class='ico '+val.icon)
+	//- 					h5= val.text
+
+
 
 
 	include includes/footer
