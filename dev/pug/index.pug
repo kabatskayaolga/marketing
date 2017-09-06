@@ -131,9 +131,9 @@ block content
 										i.ico.arrow
 									br
 									br
-									a.button Заполнить бриф на разработку
-
-									a.button.inner Расчитать стоимость разработки
+									a.button Скачать бриф
+									br
+									a.button.inner Узнать стоимость
 
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
@@ -149,9 +149,9 @@ block content
 										i.ico.arrow
 									br
 									br
-									a.button Заполнить бриф на разработку
-
-									a.button.inner Расчитать стоимость разработки
+									a.button Скачать бриф
+									br
+									a.button.inner Узнать стоимость
 
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
@@ -215,7 +215,7 @@ block content
 				
 				{
 					img: 'images/command/yulia.jpg',
-					name: 'Юлия Гадзиева',
+					name: 'Юлия Гаджиева',
 					who_is: 'Маркетолог',
 				},
 				{
@@ -297,19 +297,45 @@ block content
 			.flex-container.flex_6_columns
 				each val in advantages
 					.advantage
-						.advantage_align
+						.ico_align
 							i(class='ico '+val.icon)
 						h5= val.text
-	//- #how_we_are_working
-	//- 	.wrapper
-	//- 		h2
-	//- 			span Как мы работаем?
-	//- 		.flex-container.flex_6_columns
-	//- 			each val in advantages
-	//- 				.advantage
-	//- 					.advantage_align
-	//- 						i(class='ico '+val.icon)
-	//- 					h5= val.text
+
+	-
+		var
+			working = [
+				{
+					icon: 'domain-registration2',
+					text: 'Вы заполняете заявку на сайте'
+				},
+				{
+					icon: 'document',
+					text: 'Заполняете бриф (анткету) чтобы мы расчитали стоимость'
+				},
+				{
+					icon: 'statement',
+					text: 'Утверждение по проекту'
+				},
+				{
+					icon: 'stick-man',
+					text: 'Работа специалистов над проектом'
+				},
+				{
+					icon: 'rocket-launch',
+					text: 'Тестирование и запуск'
+				},
+			]
+
+	#how_we_are_working
+		.wrapper
+			h2
+				span Как мы работаем?
+			.flex-container.flex_6_columns
+				each val in working
+					.advantage
+						.ico_align
+							i(class='ico '+val.icon)
+						h5= val.text
 
 
 
