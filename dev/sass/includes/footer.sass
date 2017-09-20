@@ -100,7 +100,8 @@ footer
 			margin-bottom: 7px
 			&:hover
 				transform: scale(1.2)
-	
+	.phone
+		margin-bottom: 2em
 	.btn__footer
 		padding: .8em 1.2em
 		background-color: transparent
@@ -109,6 +110,41 @@ footer
 		font-weight: bold
 		color: #fff
 		border: 2px solid #F8BAB1
+		&:hover
+			cursor: pointer
+			background-color: white
+			color: $activeColor
 	form
 		width: 100%
 
+.white-popup-block
+	background: #FFF
+	padding: 20px 30px
+	text-align: left
+	max-width: 450px
+	margin: 40px auto
+	position: relative
+	text-align: center
+	h3
+		margin-bottom: 0
+	input, textarea
+		padding: 0.7em 1.5em
+		// background-color: #fad3d3
+		border: 2px solid $activeColor
+		margin-bottom: .6em
+		font-size: 1em
+		// @media (min-width: 560px)
+		width: 100%
+		outline: none
+		box-sizing: border-box
+	textarea
+		// font-size: 1.1em
+		min-height: 150px
+		font-family: 'Istok Web', 'Helvetica', sans-serif
+	[type="submit"]
+		border: 2px solid $activeColor
+		color: white
+		background-color: $activeColor
+		&:hover
+			background-color: white
+			color: $activeColor

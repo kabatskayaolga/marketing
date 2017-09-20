@@ -25,6 +25,7 @@ a
 	text-decoration: none
 	border-bottom: 2px dotted
 	border-radius: 3px
+	outline: none
 	&:hover
 		color: lighten($activeColor, 10%)
 		.ico
@@ -195,6 +196,19 @@ h2
 		font-size: 2.3em
 	@media(max-width: 700px)
 		font-size: 1.8em
+h3
+	font-size: 2em
+	text-transform: uppercase
+	text-align: center
+	color: $activeColor
+	margin: 0.5em 0
+	span
+		border-bottom: 0.1em dotted
+
+	@media(max-width: 1030px)
+		font-size: 1.8em
+	@media(max-width: 700px)
+		font-size: 1.6em
 
 h4
 	font-size: 1.9em
@@ -543,7 +557,7 @@ h5
 
 
 .button_after__prew
-	background-color: red
+	background-color: $activeColor
 	content: ''
 	display: block
 	width: 40px

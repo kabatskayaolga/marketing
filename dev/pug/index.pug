@@ -1,7 +1,7 @@
 extend includes/base
 
 block title
-
+	| Fresh Generation Marketing Service
 block content 
 	.head_block.flex-container.flex-columns
 		.wrapper.head_wrapper
@@ -17,7 +17,7 @@ block content
 					| Следим за трендами и новинками.
 					br
 					| А главное, мы заставим Ваш сайт работать!
-				a.button Ознакомиться с прайсом
+				a.button(href="#services") Ознакомиться с услугами
 
 
 	-
@@ -133,7 +133,10 @@ block content
 									br
 									//- a.button Скачать бриф
 									//- br
-									a.button.inner Узнать стоимость
+									a.button.inner.popup-with-form(
+										href="#form_modal" 
+										type-of-form='Узнать стоимость' 
+										price-type= val.title) Узнать стоимость
 
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
@@ -151,7 +154,10 @@ block content
 									br
 									//- a.button Скачать бриф
 									//- br
-									a.button.inner Узнать стоимость
+									a.button.inner.popup-with-form(
+										href="#form_modal" 
+										type-of-form='Узнать стоимость' 
+										price-type= val.title) Узнать стоимость
 
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
@@ -310,7 +316,7 @@ block content
 				},
 				{
 					icon: 'document',
-					text: 'Заполняете бриф (анткету) чтобы мы расчитали стоимость'
+					text: 'Заполняете бриф (анкету) чтобы мы расчитали стоимость'
 				},
 				{
 					icon: 'statement',
@@ -337,7 +343,20 @@ block content
 							i(class='ico '+val.icon)
 						h5= val.text
 
-
+	
+	-
+		var 
+			form = {
+				action: 'https://docs.google.com/forms/d/e/1FAIpQLSc99Mj2zqlAMHEpiT_2l6Adzik8hj04TC3B7eK4NIrFor-_7Q/formResponse',
+				name: 'entry.1584016940',
+				email: 'entry.1969032943',
+				tel: 'entry.1391229494',
+				messenger: 'entry.863417891',
+				site: 'entry.1053102140',
+				comment: 'entry.1981649400',
+				type_of_form: 'entry.1954888542',
+				price_type: 'entry.1784265609'
+			}
 
 
 	include includes/footer

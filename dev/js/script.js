@@ -5,13 +5,13 @@
 // Change Logo
 
 
-function changeLogo(){
-	if ($(window).width() < 700) {
-		$('.header_logo__image').attr('src', 'images/logo-mobile.png');
-	} else{
-		$('.header_logo__image').attr('src', 'images/logo.png');
-	}
-};
+// function changeLogo(){
+// 	if ($(window).width() < 700) {
+// 		$('.header_logo__image').attr('src', 'images/logo-mobile.png');
+// 	} else{
+// 		$('.header_logo__image').attr('src', 'images/logo.png');
+// 	}
+// };
 
 // Menu
 
@@ -25,7 +25,7 @@ function openMenu(){
 
 $(document).ready(function(){
 
-	changeLogo();
+	// changeLogo();
 
 	// Menu
 
@@ -41,11 +41,18 @@ $(document).ready(function(){
 		$(this).remove();
 		$("body").removeClass('body-overflow');
 	});
+
+
+	$('.header_nav__link').click(function(){
+		if ($(window).width() < 1040) {
+			$('.header_nav').hide();
+		}
+	});
 });
 
 
 $(window).resize(function(){
-	changeLogo();
+	// changeLogo();
 	openMenu();
 });
 
@@ -125,4 +132,63 @@ $(document).ready(function(){
 	  ]
 		
   });
+});
+
+$(document).ready(function() {
+	$('.popup-with-form').magnificPopup({
+		type: 'inline',
+		preloader: false,
+		focus: '#name',
+
+		// When elemened is focused, some mobile browsers in some cases zoom in
+		// It looks not nice, so we disable it:
+		callbacks: {
+			beforeOpen: function() {
+				if($(window).width() < 700) {
+					this.st.focus = false;
+				} else {
+					this.st.focus = '#name';
+				}
+
+				
+			},
+			open: function() {
+
+
+				if(this.currItem.el.attr('type-of-form') == 'Заказать звонок'){
+					$('.hide-group').hide();
+				} else{
+					$('.hide-group').show();
+				}
+
+
+				var typeOfForm = this.currItem.el.attr('type-of-form');
+				this.currItem.inlineElement.find('[name="entry.1954888542"]').val(typeOfForm);
+
+				if(this.currItem.el.attr('price-type')){
+					var priceType = this.currItem.el.attr('price-type');
+					this.currItem.inlineElement.find('[name="entry.1784265609"]').val(priceType);
+				};
+				
+
+		    },
+		    close: function() {
+		    	this.currItem.inlineElement.find('[name="entry.1954888542"]').val('');
+		    	this.currItem.inlineElement.find('[name="entry.1784265609"]').val('');
+		     
+		    }
+		}
+	});
+});
+
+ $('form').on("submit", function() {
+
+	$.magnificPopup.open({
+        items: {
+            src: $('#form_modal_after_submit')
+        },
+        type: 'inline'
+    });
+  
+
 });

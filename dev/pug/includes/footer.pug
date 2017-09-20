@@ -1,4 +1,6 @@
-footer
+
+
+footer#contacts
 	.flex-container
 		.footer__map
 			//- img(src='images/map.png')
@@ -8,38 +10,94 @@ footer
 				span Свяжитесь с нами
 			.flex-container
 				.contact
-					h6 Телефон/Факс:
+					h6 Телефон
 					.phone
-						a(href="tel:+380487770166") +38 (048) 777-01-66 
-						br
-						a(href="tel:+380487770167") +38 (048) 777-01-67
+						a(href="tel:+380632206314") +38 (063) 220-63-14
+
 					h6.e-mail E-mail
 					.mail
-						a(href="mailto:antra@antra.ua") antra@antra.ua
+						a(href="mailto: info@fgmarketing.agency")  info@fgmarketing.agency
 					.social_links
-						a(href="")
+						a(href="https://www.facebook.com/fgmarketing.agency/" target='_blank')
 							i.ico.facebook
-						a(href="")
+						a(href="https://www.instagram.com/fgmarketing.agency/" target='_blank')
 							i.ico.instagram
-						a(href="")
+						a(href="https://www.linkedin.com/company/fgms" target='_blank')
 							i.ico.linkedin
-						a(href="")
+						a(href="https://twitter.com/fgms_agency" target='_blank')
 							i.ico.twitter
-						a(href="")
+						a(href="https://plus.google.com/b/102237211289868629110/" target='_blank')
 							i.ico.google
+				script var submitted=false
 				.form
-					
-					form()
+					iframe#target-contact-form(
+						name="target-contact-form", 
+						style="display:none;", 
+						onload="if(submitted){}")
+					form(
+						action= form.action, 
+						method="POST", 
+						target="target-contact-form",
+						onsubmit="submitted=true;")
 						.flex-container
 							.left
 								div.form-group
-									input#name.form-control(type='text', placeholder='Ваше имя:' name='name')
+									input#name.form-control(type='text', placeholder='Ваше имя*' name=form.name required)
 								div.form-group
-									input#name.form-control(type='text', placeholder='Ваш телефон:' name='name')
+									input#name.form-control(type='tel', placeholder='Ваш телефон*' name=form.tel required)
 								div.form-group
-									input#email.form-control(type='email', placeholder='Ваш Email:' name='email')
+									input#email.form-control(type='email', placeholder='Ваш Email' name=form.email)
+								input(
+									type="radio",
+									name=form.type_of_form,
+									hidden checked,
+									value='Связаться с нами')
 							.right
 								div.form-group.quastions
-									textarea(rows=3, placeholder='Ваш вопрос:' )
+									textarea(rows=3, placeholder='Ваш вопрос' name=form.comment)
 						.footer__but
-							button.btn__footer(type='submit') Отправить заявку
+							input.btn__footer(type='submit' value="Отправить заявку")
+
+
+
+#form_modal.white-popup-block.mfp-hide
+	h3 Оставьте заявку
+	p Мы свяжемся с Вами в ближайшее время
+
+
+	iframe#target-modal-form(
+		name="target-modal-form", 
+		style="display:none;", 
+		onload="if(submitted){}")
+	form(
+		action= form.action, 
+		method="POST", 
+		target="target-modal-form",
+		onsubmit="submitted=true;")
+		div.form-group
+			input#name.form-control(type='text', placeholder='Ваше имя*' name=form.name required)
+		div.form-group
+			input#name.form-control(type='tel', placeholder='Ваш телефон*' name=form.tel required)
+		div.form-group.hide-group
+			input#email.form-control(type='email', placeholder='Ваш Email' name=form.email)
+		input(
+			type="radio",
+			name=form.type_of_form,
+			hidden checked,
+			)
+		
+		input(
+			type="radio",
+			name=form.price_type,
+			hidden checked,
+			)
+		div.form-group.quastions.hide-group
+			textarea(rows=3, placeholder='Ваш вопрос' name=form.comment)
+		.footer__but
+			input.button(type='submit' value="Отправить заявку")
+
+
+#form_modal_after_submit.white-popup-block.mfp-hide
+	h3 Спасибо за заявку
+	p Мы свяжемся с Вами в ближайшее время
+

@@ -24,7 +24,7 @@ gulp.task('styles', function() {
         ])
         .pipe(plumber())
         .pipe(sass({
-           outputStyle: 'compressed'
+           // outputStyle: 'compressed'
         }))
         .pipe(prefix('last 2 version'))
         .pipe(gulp.dest('./docs/css/'))
@@ -40,7 +40,7 @@ gulp.task('templates', function() {
         ])
         .pipe(plumber())
         .pipe(pug({
-            // pretty: true
+            pretty: true
         }))
         .pipe(gulp.dest('./docs/'))
         .pipe(connect.reload());

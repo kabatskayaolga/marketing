@@ -48,11 +48,16 @@
 			else
 				a.header_nav__link(href=value.href, title=value.title)= value.title
 		//- a.button.button-close x
+	.lang_wrapper
+		a(href="https://fgmarketing.agency/en/") EN
+		|  / 
+		a().active RU
 	div
+
 		a.button.button_notxt.button-menu.open_menu
 			i.ico.menu
 			|  Меню
-		a.button.button_notxt.button-phone
+		a.button.button_notxt.button-phone.popup-with-form(href="#form_modal", type-of-form= 'Заказать звонок') 
 			i.ico.phone-call
 			|  Заказать звонок
 
