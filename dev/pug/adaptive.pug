@@ -1,0 +1,185 @@
+extend includes/base
+
+block title
+	| Fresh Generation Marketing Service
+block content 
+	.head_block.flex-container.flex-columns.adaptive_head_block
+		.wrapper.head_wrapper
+			
+			include includes/header
+
+		.wrapper
+			.header_content
+				h1 Адаптация сайта под мобильные устройства
+				h5 Проверьте прямо сейчас свой сайт на скорость загрузки от PageSpeed Insights
+				form#pagespeed.adaptive_page__form
+					input(type='text' name='site' placeholder='Введите адрес вашего сайта')
+					input(type='submit' class='submit')
+				h5.akcent Получить предложение по оптимизации мобильной версии сайта прямо сейчас
+
+				a.button.inner(href="#services") Получить предложение
+
+
+	
+	.adaptive_block.graph__block
+		.wrapper
+			.flex-container.flex_2_columns
+				div
+					h3 Адаптация сайта под мобильные устройства: 
+						span.akcent трата денег или необходимость?
+					p Телефон сегодня и телефон 5 лет назад — разные вещи. Все больше пользователей применяет мобильные устройства для серфинга по сети. 
+					p Согласно статистическим данным 83% владельцев смартфонов заказывают товары и услуги через планшет или телефон, не прибегая к эксплуатации ноутбуков.
+					p Оптимизация сайта под мобильные устройства позволит вам вывести бизнес на новый уровень и даст целый ряд преимуществ перед конкурентами.
+					.has_button
+						a.button.inner(href="#services") Получить предложение
+				div.has_image
+					img(src='https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png')
+
+
+
+	-
+		var
+			command = [
+				
+				{
+					img: 'images/command/yulia.jpg',
+					name: 'Юлия Гаджиева',
+					who_is: 'Маркетолог',
+				},
+				{
+					img: 'images/command/olya.JPG',
+					name: 'Ольга Кабацкая',
+					who_is: 'Дизайн, Front-End',
+				},
+				{
+					img: 'images/command/misha.jpg',
+					name: 'Михаил Шелудько',
+					who_is: 'Руководитель',
+				},
+				{
+					img: 'images/command/denis.jpg',
+					name: 'Денис Гришин',
+					who_is: 'Маркетолог',
+				},
+				{
+					img: 'images/command/radislav.jpg',
+					name: 'Радислав Маканов',
+					who_is: 'Дизайн, Front-End',
+				},
+				{
+					img: 'images/command/marina.jpg',
+					name: 'Марина Свичкарь',
+					who_is: 'Менеджер по продажам',
+				}
+			]
+
+
+	#command
+		.wrapper
+			h2
+				span Наша команда
+			.command_slider__wrapper
+				.button_slider.button_prew
+				.command_slider
+					
+					each val in command
+						.human
+							img.command_wrap__img(src= val.img, alt= val.name)
+							.hidden-info
+								h4= val.name
+								span.profession= val.who_is
+				.button_slider.button_next
+	-
+		var
+			advantages = [
+				{
+					icon: 'idea',
+					text: 'Наша команда всегда в курсе новинок'
+				},
+				{
+					icon: 'stopwatch',
+					text: 'Мы всегда вовремя сдаем проекты'
+				},
+				{
+					icon: 'domain-registration',
+					text: 'Наши сайты уже приносят нашим клиентам прибыль'
+				},
+				{
+					icon: 'bar-chart',
+					text: 'Наши маркетинговые решения уже увеличили продажи'
+				},
+				{
+					icon: 'telephone',
+					text: 'Мы предоставляем клиенту техподдержку и инструкции '
+				},
+
+				{
+					icon: 'cube',
+					text: 'Мы решаем задачи бизнеса'
+				}
+			]
+	#advantages
+		.wrapper
+			h2
+				span Наши преимущества
+			.flex-container.flex_6_columns
+				each val in advantages
+					.advantage
+						.ico_align
+							i(class='ico '+val.icon)
+						h5= val.text
+
+	-
+		var
+			working = [
+				{
+					icon: 'domain-registration2',
+					text: 'Вы заполняете заявку на сайте'
+				},
+				{
+					icon: 'document',
+					text: 'Заполняете бриф (анкету) чтобы мы расчитали стоимость'
+				},
+				{
+					icon: 'statement',
+					text: 'Утверждение по проекту'
+				},
+				{
+					icon: 'stick-man',
+					text: 'Работа специалистов над проектом'
+				},
+				{
+					icon: 'rocket-launch',
+					text: 'Тестирование и запуск'
+				},
+			]
+
+	#how_we_are_working
+		.wrapper
+			h2
+				span Как мы работаем?
+			.flex-container.flex_6_columns
+				each val in working
+					.advantage
+						.ico_align
+							i(class='ico '+val.icon)
+						h5= val.text
+
+	
+	-
+		var 
+			form = {
+				action: 'https://docs.google.com/forms/d/e/1FAIpQLSc99Mj2zqlAMHEpiT_2l6Adzik8hj04TC3B7eK4NIrFor-_7Q/formResponse',
+				name: 'entry.1584016940',
+				email: 'entry.1969032943',
+				tel: 'entry.1391229494',
+				messenger: 'entry.863417891',
+				site: 'entry.1053102140',
+				comment: 'entry.1981649400',
+				type_of_form: 'entry.1954888542',
+				price_type: 'entry.1784265609'
+			}
+
+
+	include includes/footer
+	script(src='js/script.js?ver=0.002')

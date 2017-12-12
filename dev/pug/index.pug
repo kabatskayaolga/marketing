@@ -137,7 +137,7 @@ block content
 										href="#form_modal" 
 										type-of-form='Узнать стоимость' 
 										price-type= val.title) Узнать стоимость
-
+									a.b24-web-form-popup-btn-8 Узнать стоимость
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
 										//- each rtyry in val.services
@@ -158,7 +158,7 @@ block content
 										href="#form_modal" 
 										type-of-form='Узнать стоимость' 
 										price-type= val.title) Узнать стоимость
-
+									button.b24-web-form-popup-btn-8 Узнать стоимость
 								.services_block__item_services.container-1-2.services_block__hidden
 									ul !{val.services}
 										//- each rtyry in val.services
@@ -213,7 +213,7 @@ block content
 		.portfolio_blocks.flex-container.flex-container__nowrap
 			each val in portfolio
 				a.portfolio_block(href= val.img)
-					img(src= val.img, alt=val.link).mmm 
+					img(src= val.img, alt=val.link) 
 
 	-
 		var
@@ -360,4 +360,4 @@ block content
 
 
 	include includes/footer
-	script(src='js/script.js?ver=0.001')
+	script(src='js/script.js?ver=0.002')

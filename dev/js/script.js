@@ -36,7 +36,6 @@ $(document).ready(function(){
 	});
 
 	$(".header_nav").on('click', '.button-close',function(){
-		
 		$('.header_nav').hide();
 		$(this).remove();
 		$("body").removeClass('body-overflow');
@@ -93,7 +92,80 @@ $('.portfolio_blocks').each(function() { // the containers for all your gallerie
         type: 'image',
         gallery: {
           enabled:true
-        }
+        },
+        callbacks: {
+			open: function() {
+
+
+				// $(this.content).append(
+				// 	'<span class="prompt">Для увеличения/уменьшения изображения прокрутите колесиком мыши</span>'
+				// );
+
+				// var posY = parseInt($('.mfp-content').css('height'));
+				// var raznY = ($('body').height() - posY)/ 2 -160 ;
+
+				$( window).on('mousewheel', function(event) {
+
+				    var height = $('.mfp-img').css('height');
+
+				    if($('.mfp-img').length > 0 && event.deltaY == 1){
+				    	var count= 500;
+				    	 event.preventDefault();
+				    } else if(
+				    	$('.mfp-img').length > 0 && 
+				    	event.deltaY == -1 &&  
+				    	parseInt(height) >= $(window).height()
+				    ){
+				    	var count= -500;
+				    	 event.preventDefault();
+				    }
+				    $('.mfp-img').css('max-height', parseInt(height)+count+'px');
+
+				  //   var posX = parseInt($('.mfp-content').css('width'));
+			 		// var raznX = ($(window).width() - posX) / 2 - 50;
+
+			 		// $('.prompt').css({
+			 		// 	'top': event.pageY - raznY +'px',
+			 		// 	'left': event.pageX - raznX +'px'
+			 		// });
+			 		// console.log(event.pageX + ", " + event.pageY, $('body').height(), posY, raznY);
+
+
+				});
+
+
+				
+
+				
+				// $(window).resize(function(){
+
+			 // 		var posX = parseInt($('.mfp-content').css('width'));
+			 // 		var raznX = ($(window).width() - posX) / 2 - 50;
+
+			 // 		$('.prompt').css({
+			 // 			'top': event.pageY - raznY +'px',
+			 // 			'left': event.pageX - raznX +'px'
+			 // 		});
+			 // 		console.log(event.pageX + ", " + event.pageY, $('body').height(), posY, raznY);
+
+	
+				// });
+				// $(document).mousemove(function(event){
+
+			 // 		var posX = parseInt($('.mfp-content').css('width'));
+			 // 		var raznX = ($(window).width() - posX) / 2 - 50;
+
+			 // 		$('.prompt').css({
+			 // 			'top': event.pageY - raznY +'px',
+			 // 			'left': event.pageX - raznX +'px'
+			 // 		});
+			 // 		console.log(event.pageX + ", " + event.pageY, $('body').height(), posY, raznY);
+
+				// });
+			},
+
+		}
+        
     });
 });
 
@@ -179,16 +251,23 @@ $(document).ready(function() {
 		    }
 		}
 	});
+	$('form').on("submit", function() {
+	 	console.log('done');
+		$.magnificPopup.open({
+	        items: {
+	            src: $('#form_modal_after_submit')
+	        },
+	        type: 'inline'
+	    });
+	  
+
+	});
 });
 
- $('form').on("submit", function() {
 
-	$.magnificPopup.open({
-        items: {
-            src: $('#form_modal_after_submit')
-        },
-        type: 'inline'
-    });
-  
 
-});
+
+
+
+
+
