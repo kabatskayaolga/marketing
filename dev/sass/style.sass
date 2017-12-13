@@ -955,6 +955,10 @@ h5.afterPAgespeed
 		background-position: right center
 	.flex_2_columns
 		position: relative
+		@media(min-width: 1000px)
+			justify-content: flex-start
+		
+
 		& > div
 			max-width: 700px
 	h2
@@ -1030,3 +1034,25 @@ h5.afterPAgespeed
 				background-size: contain
 				padding-left: 2.5rem
 
+.has__screen
+	
+	@media(max-width: 1000px)
+		text-align: center
+	@media(max-width: 804px)
+		display: none
+		text-align: center
+
+	img
+		position: relative
+		bottom: -1000px
+		background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png)
+		background-repeat: no-repeat
+		padding: 62px 15px 92px
+		width: 228px
+
+		&.active
+			bottom: 0
+		@media(max-width: 1000px)
+			padding: 48px 15px 92px
+			width: 180px
+			background-size: contain

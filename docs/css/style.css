@@ -1734,6 +1734,10 @@ h5.afterPAgespeed {
       background-position: right center; } }
   .image__back .flex_2_columns {
     position: relative; }
+    @media (min-width: 1000px) {
+      .image__back .flex_2_columns {
+        -ms-flex-pack: start;
+            justify-content: flex-start; } }
     .image__back .flex_2_columns > div {
       max-width: 700px; }
   .image__back h2 {
@@ -1811,3 +1815,27 @@ h5.afterPAgespeed {
           font-size: 1.8rem;
           background-size: contain;
           padding-left: 2.5rem; } }
+
+@media (max-width: 1000px) {
+  .has__screen {
+    text-align: center; } }
+
+@media (max-width: 804px) {
+  .has__screen {
+    display: none;
+    text-align: center; } }
+
+.has__screen img {
+  position: relative;
+  bottom: -1000px;
+  background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png);
+  background-repeat: no-repeat;
+  padding: 62px 15px 92px;
+  width: 228px; }
+  .has__screen img.active {
+    bottom: 0; }
+  @media (max-width: 1000px) {
+    .has__screen img {
+      padding: 48px 15px 92px;
+      width: 180px;
+      background-size: contain; } }

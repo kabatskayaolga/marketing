@@ -357,6 +357,11 @@ $(document).ready(function() {
 						text += '.';
 					  $('.afterPAgespeed span').text(text);
 					}, 500);
+				}, 
+				error:  function(error){
+					$('.afterPAgespeed').remove();
+					afterText = '<p class="afterPAgespeed">* Вы ввели некоректный адрес сайта<br />Если вы уверены что все правильно ввели, обновите страницу </p>';
+					th.after(afterText);
 				}
 			});
 		}
@@ -412,7 +417,7 @@ $(document).ready(function() {
           console.log("Response", response);
           var txtH5 = '';
           var txtP = '';
-          // $('img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data);
+          $('.has__screen img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data).addClass('active');
           if(response.result.mobileFriendliness == 'MOBILE_FRIENDLY'){
           	txtH5 = 'Ваш сайт адаптивен'
           } else{
@@ -427,10 +432,8 @@ $(document).ready(function() {
            			iss[i].rule == 'CONFIGURE_VIEWPORT' ? ' CONFIGURE_VIEWPORT<br />' : 
            			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? ' FIXED_WIDTH_VIEWPORT<br />' : 
            			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? ' SIZE_CONTENT_TO_VIEWPORT<br />' :
-           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' Слишком<br /> мелкий шрифт' :
+           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' Слишкоммелкий шрифт<br />' :
            			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? ' TAP_TARGETS_TOO_CLOSE<br />' :'hhgj';
-
-
            	}
            }
 			th.after('<h5 class="afterPAgespeed">' + txtH5 + '</h5><p class="afterPAgespeed">' + txtP + '</p>');
