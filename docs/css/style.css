@@ -1476,28 +1476,39 @@ footer {
   .head_block.adaptive_head_block h5 {
     line-height: 1.3; }
     .head_block.adaptive_head_block h5.akcent {
-      margin: 2em 0 1em; }
+      margin: 0 0 1em; }
   .head_block.adaptive_head_block .adaptive_page__form input {
     color: white; }
 
-.adaptive_page__form input {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid white;
-  padding: 5px 0;
-  outline: none;
-  min-width: 70%; }
-  @media (max-width: 700px) {
-    .adaptive_page__form input {
-      min-width: 350px; } }
-  @media (max-width: 470px) {
-    .adaptive_page__form input {
-      min-width: 260px; } }
-  .adaptive_page__form input.submit {
+.adaptive_page__form {
+  margin-bottom: 1em; }
+  .adaptive_page__form input:not([type='submit']),
+  .adaptive_page__form textarea:not([type='submit']) {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    outline: none;
+    min-width: 70%;
+    font-size: 1rem;
+    font-weight: 400;
+    resize: none; }
+    @media (max-width: 700px) {
+      .adaptive_page__form input:not([type='submit']),
+      .adaptive_page__form textarea:not([type='submit']) {
+        min-width: 350px; } }
+    @media (max-width: 470px) {
+      .adaptive_page__form input:not([type='submit']),
+      .adaptive_page__form textarea:not([type='submit']) {
+        min-width: 260px; } }
+  .adaptive_page__form [type='submit'].submit {
     min-width: 20px;
     border-bottom: none;
     font-size: 0;
     height: 18px;
+    outline: none;
+    background-color: transparent;
+    border: none;
     background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/fast-forward.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -1506,39 +1517,93 @@ footer {
     cursor: pointer;
     padding: 25px 10px 10px;
     background-position: center; }
+  .adaptive_page__form ::-webkit-input-placeholder {
+    font-size: 17px;
+    color: #484848;
+    font-family: 'Istok Web', 'Helvetica', sans-serif; }
+  .adaptive_page__form :-ms-input-placeholder {
+    font-size: 17px;
+    color: #484848;
+    font-family: 'Istok Web', 'Helvetica', sans-serif; }
+  .adaptive_page__form ::placeholder {
+    font-size: 17px;
+    color: #484848;
+    font-family: 'Istok Web', 'Helvetica', sans-serif; }
+  .adaptive_page__form.big__form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2rem 4rem;
+    border: 2px solid #f1f1f1;
+    border-radius: 5px; }
+    @media (max-width: 700px) {
+      .adaptive_page__form.big__form {
+        padding: 1rem 2rem; } }
+    .adaptive_page__form.big__form h3 {
+      margin-bottom: 0; }
+    .adaptive_page__form.big__form .small {
+      line-height: 1rem;
+      font-size: 0.8rem; }
+    .adaptive_page__form.big__form .inp_wrap {
+      margin-bottom: 0.5rem; }
+      .adaptive_page__form.big__form .inp_wrap input:not([type='submit']),
+      .adaptive_page__form.big__form .inp_wrap textarea:not([type='submit']) {
+        border: 2px solid #fd7760;
+        padding: 0.7rem 1rem;
+        min-width: 100%;
+        box-sizing: border-box; }
+    .adaptive_page__form.big__form [type='submit'] {
+      width: 100%;
+      font-size: 1rem;
+      outline: none; }
+  .adaptive_page__form.dark input,
+  .adaptive_page__form.dark textarea {
+    border-bottom: 2px solid white; }
+  .adaptive_page__form.dark input:not([type='submit']) {
+    padding-right: 30px;
+    box-sizing: border-box; }
+  .adaptive_page__form.dark ::-webkit-input-placeholder {
+    color: #f7f7f7; }
+  .adaptive_page__form.dark :-ms-input-placeholder {
+    color: #f7f7f7; }
+  .adaptive_page__form.dark ::placeholder {
+    color: #f7f7f7; }
 
-.adaptive_page__form ::-webkit-input-placeholder {
-  font-size: 17px;
-  color: #e4e4e4; }
+p.afterPAgespeed {
+  color: grey; }
 
-.adaptive_page__form :-ms-input-placeholder {
-  font-size: 17px;
-  color: #e4e4e4; }
-
-.adaptive_page__form ::placeholder {
-  font-size: 17px;
-  color: #e4e4e4; }
+h5.afterPAgespeed {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  width: 120%; }
+  @media (max-width: 640px) {
+    h5.afterPAgespeed {
+      width: 100%;
+      font-size: 1.5rem; } }
 
 .akcent {
   color: #fd7760;
   font-weight: 600; }
 
+.grey_block {
+  background-color: #f8f8f8; }
+
 .adaptive_block .wrapper {
   padding: 50px 0; }
 
-.adaptive_block h3 {
+.adaptive_block h2 {
   text-align: left;
   color: black;
   text-transform: initial;
   margin-bottom: 3em;
   font-size: 2.5em; }
-  .adaptive_block h3 span {
+  .adaptive_block h2 span {
     border: none; }
   @media (max-width: 1030px) {
-    .adaptive_block h3 {
+    .adaptive_block h2 {
       font-size: 1.8em; } }
   @media (max-width: 700px) {
-    .adaptive_block h3 {
+    .adaptive_block h2 {
       font-size: 1.6em; } }
 
 .adaptive_block .flex_2_columns > div {
@@ -1559,6 +1624,7 @@ footer {
   background-position: center 45%; }
   @media (max-width: 1030px) {
     .adaptive_block.graph__block {
+      background-position: left 32%;
       background-size: 200%; } }
   @media (max-width: 790px) {
     .adaptive_block.graph__block {
@@ -1567,3 +1633,178 @@ footer {
       .adaptive_block.graph__block .has_button {
         text-align: center;
         margin-bottom: 2rem; } }
+
+.profit__block h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.5em; }
+  .profit__block h2 .small {
+    display: block;
+    font-size: 0.5em;
+    text-transform: initial; }
+
+.profit__block .wrapper__block {
+  padding: 25px 0; }
+
+.profit__block .wrapper:first-child {
+  margin-bottom: -50px; }
+
+.profit__block .has_img {
+  text-align: right; }
+  .profit__block .has_img img {
+    width: 700px; }
+    @media (max-width: 790px) {
+      .profit__block .has_img img {
+        width: 100%;
+        border-top: 5px solid #fd7760; } }
+
+.profit__block .profit__block_item {
+  background-color: white;
+  border-left: 5px solid #fd7760;
+  padding: 2rem; }
+  @media (max-width: 790px) {
+    .profit__block .profit__block_item {
+      padding: 1rem;
+      border: none; } }
+  @media (min-width: 790px) {
+    .profit__block .profit__block_item {
+      margin-left: -25rem; } }
+  @media (min-width: 1000px) {
+    .profit__block .profit__block_item {
+      margin-left: -15rem; } }
+  @media (min-width: 1300px) {
+    .profit__block .profit__block_item {
+      margin-left: -5rem;
+      padding: 2rem 2rem; } }
+  .profit__block .profit__block_item .flex-container {
+    -ms-flex-align: start;
+        align-items: flex-start; }
+  @media (max-width: 1200px) {
+    .profit__block .profit__block_item .__ico {
+      -ms-flex-direction: column;
+          flex-direction: column; } }
+  .profit__block .profit__block_item .ico {
+    min-width: 95px;
+    height: 78px;
+    display: block;
+    background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/it1.png");
+    background-repeat: no-repeat;
+    background-position: center; }
+    .profit__block .profit__block_item .ico.ico-2 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/it2.png"); }
+    .profit__block .profit__block_item .ico.ico-3 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/it3.png"); }
+  .profit__block .profit__block_item h3 {
+    text-transform: initial;
+    color: black;
+    text-align: left;
+    font-size: 1.5rem; }
+    @media (max-width: 1030px) {
+      .profit__block .profit__block_item h3 {
+        font-size: 1.2rem; } }
+
+.image__back {
+  background-color: #e9eef1;
+  background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/back_adaptive.jpg);
+  background-position: right center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative; }
+  @media (max-width: 1428px) {
+    .image__back {
+      background-position: 120% center; } }
+  @media (max-width: 1328px) {
+    .image__back {
+      background-position: 140% center; } }
+  @media (max-width: 1264px) {
+    .image__back {
+      background-position: 160% center; } }
+  @media (max-width: 1216px) {
+    .image__back:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to right, rgba(233, 238, 241, 0.9) 71%, rgba(16, 19, 50, 0) 100%);
+      z-index: 0; } }
+  @media (max-width: 704px) {
+    .image__back {
+      background-size: cover;
+      background-position: right center; } }
+  .image__back .flex_2_columns {
+    position: relative; }
+    .image__back .flex_2_columns > div {
+      max-width: 700px; }
+  .image__back h2 {
+    margin-bottom: 1em; }
+  .image__back h5 {
+    line-height: 1.5; }
+
+.adaptive__items_block {
+  text-align: center; }
+  .adaptive__items_block h2 {
+    text-align: center;
+    margin-bottom: 1em; }
+  .adaptive__items_block .ico {
+    min-width: 150px;
+    height: 100px;
+    display: block;
+    background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; }
+    @media (max-width: 600px) {
+      .adaptive__items_block .ico {
+        min-width: 150px;
+        height: 70px; } }
+    .adaptive__items_block .ico.ico-2 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic2.png"); }
+    .adaptive__items_block .ico.ico-3 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic3.png"); }
+    .adaptive__items_block .ico.ico-4 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic4.png"); }
+    .adaptive__items_block .ico.ico-5 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic5.png"); }
+    .adaptive__items_block .ico.ico-6 {
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/ic6.png"); }
+
+.adaptive_block.sale {
+  text-align: center;
+  background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/graph-2.png);
+  background-position: left 8%; }
+  @media (max-width: 1035px) {
+    .adaptive_block.sale {
+      background-size: 100%; } }
+  @media (max-width: 700px) {
+    .adaptive_block.sale {
+      background-size: 150%;
+      background-position: left 5%; } }
+  @media (max-width: 609px) {
+    .adaptive_block.sale {
+      background-size: 180%;
+      background-position: left 5%; } }
+  @media (max-width: 562px) {
+    .adaptive_block.sale {
+      background-size: 180%;
+      background-position: left 8%; } }
+  .adaptive_block.sale h2 {
+    text-align: center; }
+  .adaptive_block.sale h4 {
+    text-transform: initial;
+    font-weight: 600;
+    font-size: 1.5rem; }
+    .adaptive_block.sale h4 a.big {
+      font-size: 3rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 400;
+      background-image: url("https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/ico/smart.png");
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 3.5rem; }
+      @media (max-width: 600px) {
+        .adaptive_block.sale h4 a.big {
+          font-size: 1.8rem;
+          background-size: contain;
+          padding-left: 2.5rem; } }

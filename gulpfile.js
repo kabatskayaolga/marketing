@@ -52,9 +52,9 @@ var uglify = require('gulp-uglify');
 
 gulp.task('scripts', function() {
     gulp.src([
-        './node_modules/jquery/dist/jquery/jquery.min.js',
-        './node_modules/jquery-mousewheel/jquery.mousewheel.js',
-        './node_modules/slick-carousel/slick/slick.min.js',
+        './dev/assets/jquery.min.js',
+        './dev/assets/jquery.mousewheel.js',
+        './dev/assets/slick.min.js',
 
         // 'https://github.com/dimsemenov/Magnific-Popup/blob/master/dist/jquery.magnific-popup.js',
         './dev/js/*.js'

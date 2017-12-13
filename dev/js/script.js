@@ -253,13 +253,18 @@ $(document).ready(function() {
 	});
 	$('form').on("submit", function() {
 	 	console.log('done');
+	 	if($(this).hasClass('adaptive_page__form')){
+
+	 	} else{
+
+
 		$.magnificPopup.open({
 	        items: {
 	            src: $('#form_modal_after_submit')
 	        },
 	        type: 'inline'
 	    });
-	  
+	 	}
 
 	});
 });
@@ -267,7 +272,97 @@ $(document).ready(function() {
 
 
 
+///////////////////////////////////////
+// Adaptive
+///////////////////////////////////////
+$(document).ready(function() {
+	// $('.popup-with-form-adaptive').magnificPopup({
+	// 	type: 'inline',
+	// 	preloader: false,
+	// 	focus: '#name',
+
+	// 	// When elemened is focused, some mobile browsers in some cases zoom in
+	// 	// It looks not nice, so we disable it:
+	// 	callbacks: {
+	// 		beforeOpen: function() {
+	// 			if($(window).width() < 700) {
+	// 				this.st.focus = false;
+	// 			} else {
+	// 				this.st.focus = '#name';
+	// 			}
+
+				
+	// 		},
+	// 		open: function() {
 
 
+	// 			if(this.currItem.el.attr('type-of-form') == 'Заказать звонок'){
+	// 				$('.hide-group').hide();
+	// 			} else{
+	// 				$('.hide-group').show();
+	// 			}
 
 
+	// 			var typeOfForm = this.currItem.el.attr('type-of-form');
+	// 			this.currItem.inlineElement.find('[name="entry.1954888542"]').val(typeOfForm);
+
+	// 			if(this.currItem.el.attr('price-type')){
+	// 				var priceType = this.currItem.el.attr('price-type');
+	// 				this.currItem.inlineElement.find('[name="entry.1784265609"]').val(priceType);
+	// 			};
+				
+
+	// 	    },
+	// 	    close: function() {
+	// 	    	this.currItem.inlineElement.find('[name="entry.1954888542"]').val('');
+	// 	    	this.currItem.inlineElement.find('[name="entry.1784265609"]').val('');
+		     
+	// 	    }
+	// 	}
+	// });
+	$('#pagespeed').submit(function(e){
+		e.preventDefault();
+		
+
+		// console.log(this, e, $(this).children('[type="text"]').val());
+		var websiteAddr = $(this).children('[type="text"]').val();
+		var score = 0;
+	   	var afterText = '';
+	   	var th = $(this);
+	   	var timerId = '';
+		if(websiteAddr == ''){
+			$('.afterPAgespeed').remove();
+			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
+		} else{
+			$.ajax({url: "https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=" + websiteAddr + "&strategy=mobile&key=AIzaSyAYizyOUtJ4AJw4vxWjYjNuRe0JU8nMwCY", 
+				success: function(result){
+					$('.afterPAgespeed').remove();
+	   				var score = result.ruleGroups.SPEED.score;
+	   				afterText = '<h5 class="afterPAgespeed">Ваша страница оптимизирована на <span class="akcent">'+ score +'%</span></h5>';
+	   				th.after(afterText);
+	   				setTimeout(function() {
+					  clearInterval(timerId);
+					}, 0);
+				},
+				beforeSend:  function(result){
+					$('.afterPAgespeed').remove();
+					afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
+					th.after(afterText);
+					var i = 0;
+					var text = '';
+					timerId = setInterval(function() {
+						if(i == 3){
+							i = 0;
+							text = '';
+						}
+						i++;
+						text += '.';
+					  $('.afterPAgespeed span').text(text);
+					}, 500);
+				}
+			});
+		}
+
+	})
+
+});
