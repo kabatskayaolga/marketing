@@ -1772,7 +1772,10 @@ h5.afterPAgespeed {
 .adaptive_block.sale {
   text-align: center;
   background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/graph-2.png);
-  background-position: left 8%; }
+  background-position: left 2%; }
+  @media (max-width: 1732px) {
+    .adaptive_block.sale {
+      background-position: left 8%; } }
   @media (max-width: 1035px) {
     .adaptive_block.sale {
       background-size: 100%; } }

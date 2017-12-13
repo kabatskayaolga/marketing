@@ -76,7 +76,7 @@ block content
 				div
 					h2 Как проверить сайт на адаптивность?
 					p Вы можете сделать это самостоятельно: воспользуйтесь нашим сервисом или любым из онлайн ресурсов. 
-					form#pagespeed.adaptive_page__form
+					form#mobileFliendly.adaptive_page__form
 						input(type='text' name='site' placeholder='Проверить сайт на адаптивность прямо сейчас')
 						input(type='submit' class='submit')
 					p Чтобы протестировать портал на качество отображения достаточно зайти на него с нескольких версий устройств: iOS, Android, Windows. 
@@ -153,4 +153,5 @@ block content
 
 
 	include includes/footer
+	<script src="https://apis.google.com/js/api.js"></script>
 	script(src='js/script.js?ver=0.002')

@@ -55,6 +55,7 @@ gulp.task('scripts', function() {
         './dev/assets/jquery.min.js',
         './dev/assets/jquery.mousewheel.js',
         './dev/assets/slick.min.js',
+        'https://apis.google.com/js/api.js',
 
         // 'https://github.com/dimsemenov/Magnific-Popup/blob/master/dist/jquery.magnific-popup.js',
         './dev/js/*.js'

@@ -322,8 +322,6 @@ $(document).ready(function() {
 	// });
 	$('#pagespeed').submit(function(e){
 		e.preventDefault();
-		
-
 		// console.log(this, e, $(this).children('[type="text"]').val());
 		var websiteAddr = $(this).children('[type="text"]').val();
 		var score = 0;
@@ -363,6 +361,101 @@ $(document).ready(function() {
 			});
 		}
 
-	})
+	});
+
+
+  function loadClient(websiteAddr, th) {
+  	console.log('websiteAddr: ', websiteAddr, 'this: ', th);
+    gapi.client.setApiKey('AIzaSyAYizyOUtJ4AJw4vxWjYjNuRe0JU8nMwCY');
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest")
+        .then(function() {
+          console.log("GAPI client loaded for API");
+          execute(websiteAddr, th);
+        }, function(error) {
+          console.error("Error loading GAPI client for API");
+        });
+  }
+  // Make sure the client is loaded before calling this method.
+  function execute(val, th) {
+  	console.log(th, afterText);
+  	$('.afterPAgespeed').remove();
+	var afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
+	th.after(afterText);
+
+	var i = 0;
+	var text = '';
+	timerId = setInterval(function() {
+		if(i == 3){
+			i = 0;
+			text = '';
+		}
+		i++;
+		text += '.';
+	  $('.afterPAgespeed span').text(text);
+	}, 500);
+
+    return gapi.client.searchconsole.urlTestingTools.mobileFriendlyTest.run({
+      "resource": {
+        "url": val,
+        "requestScreenshot": true
+      }
+
+    })
+        .then(function(response) {
+          // Handle the results here (response.result has the parsed body).
+        	$('.afterPAgespeed').remove();
+			
+			setTimeout(function() {
+			  clearInterval(timerId);
+			}, 0);
+
+          console.log("Response", response);
+          var txt = '';
+          // $('img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data);
+          if(response.result.mobileFriendliness == 'MOBILE_FRIENDLY'){
+          	txt = 'Ваш сайт адаптивен'
+          } else{
+          	txt = 'Ваш сайт не адаптивен'
+          }
+          var iss = response.result.mobileFriendlyIssues;
+           if(iss.length != 0){
+           	for(var i = 0; i < iss.length; i++){
+           		txt += 
+           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? '<br /> + MOBILE_FRIENDLY_RULE_UNSPECIFIED' : 
+           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? '<br />MOBILE_FRIENDLY_RULE_UNSPECIFIED' : 
+           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? ' <br />CONFIGURE_VIEWPORT' : 
+           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? ' <br />FIXED_WIDTH_VIEWPORT' : 
+           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? ' <br />SIZE_CONTENT_TO_VIEWPORT' :
+           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' <br />Слишком мелкий шрифт' :
+           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? ' <br />TAP_TARGETS_TOO_CLOSE' :'hhgj';
+
+
+           	}
+           }
+          $('p').html(txt);
+          
+        }, function(error) {
+          console.error("Execute error", error);
+        });
+  }
+  gapi.load("client");
+
+	$('#mobileFliendly').submit(function(e){
+		e.preventDefault();
+		// console.log(this, e, $(this).children('[type="text"]').val());
+		var websiteAddr = $(this).children('[type="text"]').val();
+		var th = $(this);
+		var timerId = '';
+		console.log(websiteAddr);
+
+		if(websiteAddr == ''){
+			$('.afterPAgespeed').remove();
+			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
+		} else{
+			loadClient(websiteAddr, th);
+		}
+		
+
+	});
 
 });
