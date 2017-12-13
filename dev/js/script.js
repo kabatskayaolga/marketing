@@ -332,7 +332,7 @@ $(document).ready(function() {
 			$('.afterPAgespeed').remove();
 			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
 		} else{
-			$.ajax({url: "https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=" + websiteAddr + "&strategy=mobile&key=AIzaSyAYizyOUtJ4AJw4vxWjYjNuRe0JU8nMwCY", 
+			$.ajax({url: "https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=" + websiteAddr + "&strategy=mobile&key=AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo", 
 				success: function(result){
 					$('.afterPAgespeed').remove();
 	   				var score = result.ruleGroups.SPEED.score;
@@ -366,7 +366,7 @@ $(document).ready(function() {
 
   function loadClient(websiteAddr, th) {
   	console.log('websiteAddr: ', websiteAddr, 'this: ', th);
-    gapi.client.setApiKey('AIzaSyAYizyOUtJ4AJw4vxWjYjNuRe0JU8nMwCY');
+    gapi.client.setApiKey('AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo');
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest")
         .then(function() {
           console.log("GAPI client loaded for API");
@@ -408,31 +408,33 @@ $(document).ready(function() {
 			setTimeout(function() {
 			  clearInterval(timerId);
 			}, 0);
-
+			
           console.log("Response", response);
-          var txt = '';
+          var txtH5 = '';
+          var txtP = '';
           // $('img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data);
           if(response.result.mobileFriendliness == 'MOBILE_FRIENDLY'){
-          	txt = 'Ваш сайт адаптивен'
+          	txtH5 = 'Ваш сайт адаптивен'
           } else{
-          	txt = 'Ваш сайт не адаптивен'
+          	txtH5 = 'Ваш сайт не адаптивен'
           }
           var iss = response.result.mobileFriendlyIssues;
-           if(iss.length != 0){
+           if(iss){
            	for(var i = 0; i < iss.length; i++){
-           		txt += 
-           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? '<br /> + MOBILE_FRIENDLY_RULE_UNSPECIFIED' : 
-           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? '<br />MOBILE_FRIENDLY_RULE_UNSPECIFIED' : 
-           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? ' <br />CONFIGURE_VIEWPORT' : 
-           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? ' <br />FIXED_WIDTH_VIEWPORT' : 
-           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? ' <br />SIZE_CONTENT_TO_VIEWPORT' :
-           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' <br />Слишком мелкий шрифт' :
-           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? ' <br />TAP_TARGETS_TOO_CLOSE' :'hhgj';
+           		txtP += 
+           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? 'MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
+           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? 'MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
+           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? ' CONFIGURE_VIEWPORT<br />' : 
+           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? ' FIXED_WIDTH_VIEWPORT<br />' : 
+           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? ' SIZE_CONTENT_TO_VIEWPORT<br />' :
+           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' Слишком<br /> мелкий шрифт' :
+           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? ' TAP_TARGETS_TOO_CLOSE<br />' :'hhgj';
 
 
            	}
            }
-          $('p').html(txt);
+			th.after('<h5 class="afterPAgespeed">' + txtH5 + '</h5><p class="afterPAgespeed">' + txtP + '</p>');
+          // $('p').html(txt);
           
         }, function(error) {
           console.error("Execute error", error);
@@ -447,15 +449,13 @@ $(document).ready(function() {
 		var th = $(this);
 		var timerId = '';
 		console.log(websiteAddr);
-
+		$('.remuve').remove();
 		if(websiteAddr == ''){
 			$('.afterPAgespeed').remove();
 			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
 		} else{
 			loadClient(websiteAddr, th);
 		}
-		
-
 	});
 
 });
