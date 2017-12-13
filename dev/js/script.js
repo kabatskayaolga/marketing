@@ -427,13 +427,13 @@ $(document).ready(function() {
            if(iss){
            	for(var i = 0; i < iss.length; i++){
            		txtP += 
-           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? 'MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
-           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? 'MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
-           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? ' CONFIGURE_VIEWPORT<br />' : 
-           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? ' FIXED_WIDTH_VIEWPORT<br />' : 
-           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? ' SIZE_CONTENT_TO_VIEWPORT<br />' :
-           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? ' Слишкоммелкий шрифт<br />' :
-           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? ' TAP_TARGETS_TOO_CLOSE<br />' :'hhgj';
+           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? '- MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
+           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? '- MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
+           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? '- CONFIGURE_VIEWPORT<br />' : 
+           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? '- FIXED_WIDTH_VIEWPORT<br />' : 
+           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? '- SIZE_CONTENT_TO_VIEWPORT<br />' :
+           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? '- Слишком мелкий шрифт<br />' :
+           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? '- TAP_TARGETS_TOO_CLOSE<br />' :'<br />';
            	}
            }
 			th.after('<h5 class="afterPAgespeed">' + txtH5 + '</h5><p class="afterPAgespeed">' + txtP + '</p>');
