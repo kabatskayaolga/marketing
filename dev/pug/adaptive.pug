@@ -14,10 +14,10 @@ block content
 				h5 Проверьте прямо сейчас свой сайт на скорость загрузки от PageSpeed Insights
 				form#pagespeed.adaptive_page__form.dark
 					input(type='text' name='site' placeholder='Введите адрес вашего сайта')
-					input(type='submit' class='submit')
+					input(type='submit' class='submit' value='Проверить')
 				h5.akcent Получить предложение по оптимизации мобильной версии сайта прямо сейчас
 
-				a.button.inner( ).popup-with-form-adaptive Получить предложение
+				a.button.inner(href='#form_modal__adaptive').popup-with-form-adaptive Получить предложение
 
 	
 	.adaptive_block.graph__block
@@ -30,7 +30,7 @@ block content
 					p Согласно статистическим данным 83% владельцев смартфонов заказывают товары и услуги через планшет или телефон, не прибегая к эксплуатации ноутбуков.
 					p Оптимизация сайта под мобильные устройства позволит вам вывести бизнес на новый уровень и даст целый ряд преимуществ перед конкурентами.
 					.has_button
-						a.button.inner(href="#services") Получить предложение
+						a.button.inner(href='#form_modal__adaptive').popup-with-form-adaptive  Получить предложение
 				div.has_image
 					img(src='https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png')
 
@@ -78,13 +78,28 @@ block content
 					p Вы можете сделать это самостоятельно: воспользуйтесь нашим сервисом или любым из онлайн ресурсов. 
 					form#mobileFliendly.adaptive_page__form
 						input(type='text' name='site' placeholder='Проверить сайт на адаптивность прямо сейчас')
-						input(type='submit' class='submit')
+						input(type='submit' class='submit'  value='Проверить')
 					.remuve
 						p Чтобы протестировать портал на качество отображения достаточно зайти на него с нескольких версий устройств: iOS, Android, Windows. 
 						h5.akcent При проверке мобильной версии сайта наши специалисты используют цифровые технологии разных поколений с разными форматами экранов.
-					a.button.inner(href="#services") Получить предложение
+					a.button.inner(href='#form_modal__adaptive').popup-with-form-adaptive Получить предложение
 				div.has__screen
 					img(src="", alt="")
+
+	
+	-
+		var 
+			form2 = {
+				action: 'https://docs.google.com/forms/d/e/1FAIpQLSdI02--TvsZnoAjbynyt277cNP-4vMHke5rRGd_P-LeH1ouIQ/formResponse',
+				name: 'entry.978988230',
+				email: 'entry.182022662',
+				tel: 'entry.1416367750',
+				// messenger: 'entry.863417891',
+				site: 'entry.766213977',
+				question: 'entry.1269152571',
+				sites: 'entry.816312878',
+			}
+	script var submitted2=false
 	.adaptive_block.grey_block.graph__block.sale
 		.wrapper
 			h2 Как заказать мобильную версию сайта?
@@ -94,24 +109,38 @@ block content
 		
 			p Конечная стоимость услуги зависит от ваших требований и масштабности сайта.
 			h5.akcent Задайте вопросы о цене и особенностях адаптации сайта при личной беседе с программистами!
-			form.adaptive_page__form.big__form
+			iframe#target-modal-form1(
+				name="target-modal-form1", 
+				style="display:none;", 
+				onload="if(submitted2){}")
+			form.adaptive_page__form.big__form(
+				action= form2.action, 
+				method="POST", 
+				target="target-modal-form1",
+				onsubmit="submitted2=true;")
 				h3 Оставьте свои контакты
 				p И мы свяжемся с вами в ближайшее время
 				.inp_wrap
-					input(type='text' placeholder='Ваше имя*')
+					input(type='text' placeholder='Ваше имя*' name=form2.name, required)
 				.inp_wrap
-					input(type='text' placeholder='Ваше телефон*')
+					input(type='text' placeholder='Ваше телефон*' name=form2.tel, required)
 				.inp_wrap
-					input(type='text' placeholder='Ваше email*')
-				
+					input(type='text' placeholder='Ваше email*' name=form2.email )
 				.inp_wrap
-					input(type='text' placeholder='Адрес вашего сайта http://site.com/')
+					input(type='text' placeholder='Адрес вашего сайта http://site.com/' name=form2.site)
 				//- .inp_wrap
 				//- 	input(type='text' placeholder='Ваше имя')
-				.inp_wrap
-					textarea(placeholder='Вопрос, пожелания' rows="7")
-				input(type='submit').button.inner
+				input(
+					type="hidden",
+					name=form2.sites,
+				)
 
+				.inp_wrap
+					textarea(rows=3, placeholder='Ваш вопрос' name=form2.question)
+				input(type='submit' value="Отправить заявку").button.inner
+			
+		
+		
 
 
 
@@ -155,6 +184,38 @@ block content
 			}
 
 
+
+	#form_modal__adaptive.white-popup-block.mfp-hide
+		h3 Оставьте заявку
+		p Мы свяжемся с Вами в ближайшее время
+		iframe#target-modal-form2(
+			name="target-modal-form2", 
+			style="display:none;", 
+			onload="if(submitted2){}")
+		form(
+			action= form2.action, 
+			method="POST", 
+			target="target-modal-form2",
+			onsubmit="submitted2=true;")
+			div.form-group
+				input#name.form-control(type='text', placeholder='Ваше имя*' name=form2.name required)
+			div.form-group
+				input#name.form-control(type='tel', placeholder='Ваш телефон*' name=form2.tel required)
+			div.form-group.hide-group
+				input#email.form-control(type='email', placeholder='Ваш Email' name=form2.email)
+			div.form-group.hide-group
+				input#email.form-control(type='text', placeholder='Адрес сайта' name=form2.site)
+			input(
+				type="hidden",
+				name=form2.sites,
+				)
+
+			div.form-group.quastions.hide-group
+				textarea(rows=3, placeholder='Ваш вопрос' name=form2.question)
+			.footer__but
+				input.button(type='submit' value="Отправить заявку")
+
 	include includes/footer
 	<script src="https://apis.google.com/js/api.js"></script>
 	script(src='js/script.js?ver=0.002')
+	script var WEBSITEADDR="",PAGESPEED="";$(document).ready(function(){function e(e,r){return console.log("websiteAddr: ",e,"this: ",r),gapi.client.setApiKey("AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo"),gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest").then(function(){console.log("GAPI client loaded for API"),t(e,r)},function(e){console.error("Error loading GAPI client for API")})}function t(e,t){console.log(t,r),$(".afterPAgespeed").remove();var r='<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';t.after(r);var s=0,a="";return timerId=setInterval(function(){3==s&&(s=0,a=""),s++,a+=".",$(".afterPAgespeed span").text(a)},500),gapi.client.searchconsole.urlTestingTools.mobileFriendlyTest.run({resource:{url:e,requestScreenshot:!0}}).then(function(r){$(".afterPAgespeed").remove(),setTimeout(function(){clearInterval(timerId)},0),console.log("Response",r);var s="",a="";$(".has__screen img").attr("src","data:image/png;base64,"+r.result.screenshot.data).addClass("active"),s="MOBILE_FRIENDLY"==r.result.mobileFriendliness?"Ваш сайт адаптивен":"Ваш сайт не адаптивен";var n=r.result.mobileFriendlyIssues;if(n)for(var o=0;o<n.length;o++)a+="MOBILE_FRIENDLY_RULE_UNSPECIFIED"==n[o].rule?"- Извините, у нас нет описания для правила, которое было нарушено<br />":"USES_INCOMPATIBLE_PLUGINS"==n[o].rule?"- Используются плагины, несовместимые с мобильными устройствами<br />":"CONFIGURE_VIEWPORT"==n[o].rule?"- Viewport не указан с помощью мета-тега viewport<br />":"FIXED_WIDTH_VIEWPORT"==n[o].rule?"- Viewport определен фиксированной шириной<br />":"SIZE_CONTENT_TO_VIEWPORT"==n[o].rule?"- Содержимое не имеет подходящего размера для viewport<br />":"USE_LEGIBLE_FONT_SIZES"==n[o].rule?"- Размер шрифта слишком мал для удобства чтения на маленьком экране<br />":"TAP_TARGETS_TOO_CLOSE"==n[o].rule?"- Сенсорные элементы слишком близки друг к другу<br />":"<br />";t.after('<h5 class="afterPAgespeed">'+s+'</h5><p class="afterPAgespeed">'+a+"</p>"),WEBSITEADDR+=e+", "},function(e){console.error("Execute error",e),$(".afterPAgespeed").remove(),t.after('<p class="afterPAgespeed">* Произошла ошибка, нажмите кнопку "проверить" снова или перезагрузите страницу!</p>')})}$(".popup-with-form-adaptive").magnificPopup({type:"inline",preloader:!1,focus:"#name",callbacks:{beforeOpen:function(){$(window).width()<700?this.st.focus=!1:this.st.focus="#name"},open:function(){this.currItem.inlineElement.find('[name="entry.816312878"]').val(WEBSITEADDR)},close:function(){}}}),$("#pagespeed").submit(function(e){e.preventDefault();var t=$(this).children('[type="text"]').val(),r="",s=$(this),a="";""==t?($(".afterPAgespeed").remove(),$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>')):$.ajax({url:"https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url="+t+"&strategy=mobile&key=AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo",success:function(e){$(".afterPAgespeed").remove();var n=e.ruleGroups.SPEED.score;r='<h5 class="afterPAgespeed">Ваша страница оптимизирована на <span class="akcent">'+n+"%</span></h5>",s.after(r),setTimeout(function(){clearInterval(a)},0),WEBSITEADDR+=t+", ",PAGESPEED=n+"%"},beforeSend:function(e){$(".afterPAgespeed").remove(),r='<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>',s.after(r);var t=0,n="";a=setInterval(function(){3==t&&(t=0,n=""),t++,n+=".",$(".afterPAgespeed span").text(n)},500)},error:function(e){$(".afterPAgespeed").remove(),r='<p class="afterPAgespeed">* Вы ввели некоректный адрес сайта<br />Если вы уверены что все правильно ввели, обновите страницу </p>',s.after(r)}})}),gapi.load("client"),$("#mobileFliendly").submit(function(t){t.preventDefault();var r=$(this).children('[type="text"]').val(),s=$(this);$(".remuve").remove(),""==r?($(".afterPAgespeed").remove(),$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>')):e(r,s)}),$("form").on("submit",function(){console.log("done"),$(this).hasClass("adaptive_page__form")||$.magnificPopup.open({items:{src:$("#form_modal_after_submit")},type:"inline"})})});

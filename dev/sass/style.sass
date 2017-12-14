@@ -742,6 +742,8 @@ h5
 		font-size: 1rem
 		font-weight: 400
 		resize: none
+		padding-right: 30px
+		font-family: 'Istok Web', 'Helvetica', sans-serif
 		@media(max-width: 700px)
 			min-width: 350px
 
@@ -1040,19 +1042,20 @@ h5.afterPAgespeed
 		text-align: center
 	@media(max-width: 804px)
 		display: none
-		text-align: center
 
 	img
 		position: relative
 		bottom: -1000px
 		background-image: url(https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png)
 		background-repeat: no-repeat
-		padding: 62px 15px 92px
-		width: 228px
+		// padding: 62px 15px 92px
+		
 
 		&.active
 			bottom: 0
-		@media(max-width: 1000px)
-			padding: 48px 15px 92px
-			width: 180px
-			background-size: contain
+			width: 228px
+			padding: 62px 15px 92px
+			@media(max-width: 1000px)
+				padding: 48px 15px 92px
+				width: 180px
+				background-size: contain

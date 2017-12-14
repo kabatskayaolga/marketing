@@ -252,19 +252,17 @@ $(document).ready(function() {
 		}
 	});
 	$('form').on("submit", function() {
-	 	console.log('done');
-	 	if($(this).hasClass('adaptive_page__form')){
-
-	 	} else{
-
-
+	 	var th = $(this);
+	 
 		$.magnificPopup.open({
 	        items: {
 	            src: $('#form_modal_after_submit')
 	        },
 	        type: 'inline'
 	    });
-	 	}
+	    setTimeout(function(){th.find('input').val('')}, 1000); // Привет, Вася
+	   
+
 
 	});
 });
@@ -275,190 +273,189 @@ $(document).ready(function() {
 ///////////////////////////////////////
 // Adaptive
 ///////////////////////////////////////
-$(document).ready(function() {
-	// $('.popup-with-form-adaptive').magnificPopup({
-	// 	type: 'inline',
-	// 	preloader: false,
-	// 	focus: '#name',
 
-	// 	// When elemened is focused, some mobile browsers in some cases zoom in
-	// 	// It looks not nice, so we disable it:
-	// 	callbacks: {
-	// 		beforeOpen: function() {
-	// 			if($(window).width() < 700) {
-	// 				this.st.focus = false;
-	// 			} else {
-	// 				this.st.focus = '#name';
-	// 			}
+
+// var WEBSITEADDR = '';
+// var PAGESPEED = '';
+
+// $(document).ready(function() {
+// 	$('.popup-with-form-adaptive').magnificPopup({
+// 		type: 'inline',
+// 		preloader: false,
+// 		focus: '#name',
+
+// 		// When elemened is focused, some mobile browsers in some cases zoom in
+// 		// It looks not nice, so we disable it:
+// 		callbacks: {
+// 			beforeOpen: function() {
+// 				if($(window).width() < 700) {
+// 					this.st.focus = false;
+// 				} else {
+// 					this.st.focus = '#name';
+// 				}
 
 				
-	// 		},
-	// 		open: function() {
-
-
-	// 			if(this.currItem.el.attr('type-of-form') == 'Заказать звонок'){
-	// 				$('.hide-group').hide();
-	// 			} else{
-	// 				$('.hide-group').show();
-	// 			}
-
-
-	// 			var typeOfForm = this.currItem.el.attr('type-of-form');
-	// 			this.currItem.inlineElement.find('[name="entry.1954888542"]').val(typeOfForm);
-
-	// 			if(this.currItem.el.attr('price-type')){
-	// 				var priceType = this.currItem.el.attr('price-type');
-	// 				this.currItem.inlineElement.find('[name="entry.1784265609"]').val(priceType);
-	// 			};
-				
-
-	// 	    },
-	// 	    close: function() {
-	// 	    	this.currItem.inlineElement.find('[name="entry.1954888542"]').val('');
-	// 	    	this.currItem.inlineElement.find('[name="entry.1784265609"]').val('');
+// 			},
+// 			open: function() {
+// 				// siteaddre
+// 				this.currItem.inlineElement.find('[name="entry.816312878"]').val(WEBSITEADDR);
+			
+// 		    },
+// 		    close: function() {
+		    
 		     
-	// 	    }
-	// 	}
-	// });
-	$('#pagespeed').submit(function(e){
-		e.preventDefault();
-		// console.log(this, e, $(this).children('[type="text"]').val());
-		var websiteAddr = $(this).children('[type="text"]').val();
-		var score = 0;
-	   	var afterText = '';
-	   	var th = $(this);
-	   	var timerId = '';
-		if(websiteAddr == ''){
-			$('.afterPAgespeed').remove();
-			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
-		} else{
-			$.ajax({url: "https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=" + websiteAddr + "&strategy=mobile&key=AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo", 
-				success: function(result){
-					$('.afterPAgespeed').remove();
-	   				var score = result.ruleGroups.SPEED.score;
-	   				afterText = '<h5 class="afterPAgespeed">Ваша страница оптимизирована на <span class="akcent">'+ score +'%</span></h5>';
-	   				th.after(afterText);
-	   				setTimeout(function() {
-					  clearInterval(timerId);
-					}, 0);
-				},
-				beforeSend:  function(result){
-					$('.afterPAgespeed').remove();
-					afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
-					th.after(afterText);
-					var i = 0;
-					var text = '';
-					timerId = setInterval(function() {
-						if(i == 3){
-							i = 0;
-							text = '';
-						}
-						i++;
-						text += '.';
-					  $('.afterPAgespeed span').text(text);
-					}, 500);
-				}, 
-				error:  function(error){
-					$('.afterPAgespeed').remove();
-					afterText = '<p class="afterPAgespeed">* Вы ввели некоректный адрес сайта<br />Если вы уверены что все правильно ввели, обновите страницу </p>';
-					th.after(afterText);
-				}
-			});
-		}
-
-	});
+// 		    }
+// 		}
+// 	});
 
 
-  function loadClient(websiteAddr, th) {
-  	console.log('websiteAddr: ', websiteAddr, 'this: ', th);
-    gapi.client.setApiKey('AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo');
-    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest")
-        .then(function() {
-          console.log("GAPI client loaded for API");
-          execute(websiteAddr, th);
-        }, function(error) {
-          console.error("Error loading GAPI client for API");
-        });
-  }
-  // Make sure the client is loaded before calling this method.
-  function execute(val, th) {
-  	console.log(th, afterText);
-  	$('.afterPAgespeed').remove();
-	var afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
-	th.after(afterText);
 
-	var i = 0;
-	var text = '';
-	timerId = setInterval(function() {
-		if(i == 3){
-			i = 0;
-			text = '';
-		}
-		i++;
-		text += '.';
-	  $('.afterPAgespeed span').text(text);
-	}, 500);
+// 	$('#pagespeed').submit(function(e){
+// 		e.preventDefault();
+// 		// console.log(this, e, $(this).children('[type="text"]').val());
+// 		var websiteAddr = $(this).children('[type="text"]').val();
+// 		var score = 0;
+// 	   	var afterText = '';
+// 	   	var th = $(this);
+// 	   	var timerId = '';
+// 		if(websiteAddr == ''){
+// 			$('.afterPAgespeed').remove();
+// 			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
+// 		} else{
+// 			$.ajax({url: "https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=" + websiteAddr + "&strategy=mobile&key=AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo", 
+// 				success: function(result){
+// 					$('.afterPAgespeed').remove();
+// 	   				var score = result.ruleGroups.SPEED.score;
+// 	   				afterText = '<h5 class="afterPAgespeed">Ваша страница оптимизирована на <span class="akcent">'+ score +'%</span></h5>';
+// 	   				th.after(afterText);
+// 	   				setTimeout(function() {
+// 					  clearInterval(timerId);
+// 					}, 0);
+// 					WEBSITEADDR += websiteAddr + ', ';
+// 					PAGESPEED = score + '%'; 
+// 				},
+// 				beforeSend:  function(result){
+// 					$('.afterPAgespeed').remove();
+// 					afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
+// 					th.after(afterText);
+// 					var i = 0;
+// 					var text = '';
+// 					timerId = setInterval(function() {
+// 						if(i == 3){
+// 							i = 0;
+// 							text = '';
+// 						}
+// 						i++;
+// 						text += '.';
+// 					  $('.afterPAgespeed span').text(text);
+// 					}, 500);
+// 				}, 
+// 				error:  function(error){
+// 					$('.afterPAgespeed').remove();
+// 					afterText = '<p class="afterPAgespeed">* Вы ввели некоректный адрес сайта<br />Если вы уверены что все правильно ввели, обновите страницу </p>';
+// 					th.after(afterText);
+// 				}
+// 			});
+// 		}
 
-    return gapi.client.searchconsole.urlTestingTools.mobileFriendlyTest.run({
-      "resource": {
-        "url": val,
-        "requestScreenshot": true
-      }
+// 	});
 
-    })
-        .then(function(response) {
-          // Handle the results here (response.result has the parsed body).
-        	$('.afterPAgespeed').remove();
+
+//   function loadClient(websiteAddr, th) {
+//   	console.log('websiteAddr: ', websiteAddr, 'this: ', th);
+//     gapi.client.setApiKey('AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo');
+//     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest")
+//         .then(function() {
+//           console.log("GAPI client loaded for API");
+//           execute(websiteAddr, th);
+//         }, function(error) {
+//           console.error("Error loading GAPI client for API");
+//         });
+//   }
+//   // Make sure the client is loaded before calling this method.
+//   function execute(val, th) {
+//   	console.log(th, afterText);
+//   	$('.afterPAgespeed').remove();
+// 	var afterText = '<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';
+// 	th.after(afterText);
+
+// 	var i = 0;
+// 	var text = '';
+// 	timerId = setInterval(function() {
+// 		if(i == 3){
+// 			i = 0;
+// 			text = '';
+// 		}
+// 		i++;
+// 		text += '.';
+// 	  $('.afterPAgespeed span').text(text);
+// 	}, 500);
+
+//     return gapi.client.searchconsole.urlTestingTools.mobileFriendlyTest.run({
+//       "resource": {
+//         "url": val,
+//         "requestScreenshot": true
+//       }
+
+//     })
+//         .then(function(response) {
+//           // Handle the results here (response.result has the parsed body).
+//         	$('.afterPAgespeed').remove();
 			
-			setTimeout(function() {
-			  clearInterval(timerId);
-			}, 0);
+// 			setTimeout(function() {
+// 			  clearInterval(timerId);
+// 			}, 0);
 			
-          console.log("Response", response);
-          var txtH5 = '';
-          var txtP = '';
-          $('.has__screen img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data).addClass('active');
-          if(response.result.mobileFriendliness == 'MOBILE_FRIENDLY'){
-          	txtH5 = 'Ваш сайт адаптивен'
-          } else{
-          	txtH5 = 'Ваш сайт не адаптивен'
-          }
-          var iss = response.result.mobileFriendlyIssues;
-           if(iss){
-           	for(var i = 0; i < iss.length; i++){
-           		txtP += 
-           			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? '- MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
-           			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? '- MOBILE_FRIENDLY_RULE_UNSPECIFIED<br />' : 
-           			iss[i].rule == 'CONFIGURE_VIEWPORT' ? '- CONFIGURE_VIEWPORT<br />' : 
-           			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? '- FIXED_WIDTH_VIEWPORT<br />' : 
-           			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? '- SIZE_CONTENT_TO_VIEWPORT<br />' :
-           			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? '- Слишком мелкий шрифт<br />' :
-           			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? '- TAP_TARGETS_TOO_CLOSE<br />' :'<br />';
-           	}
-           }
-			th.after('<h5 class="afterPAgespeed">' + txtH5 + '</h5><p class="afterPAgespeed">' + txtP + '</p>');
-          // $('p').html(txt);
+//           console.log("Response", response);
+//           var txtH5 = '';
+//           var txtP = '';
+//           $('.has__screen img').attr('src', 'data:image/png;base64,'+response.result.screenshot.data).addClass('active');
+//           if(response.result.mobileFriendliness == 'MOBILE_FRIENDLY'){
+//           	txtH5 = 'Ваш сайт адаптивен'
+//           } else{
+//           	txtH5 = 'Ваш сайт не адаптивен'
+//           }
+//           var iss = response.result.mobileFriendlyIssues;
+//            if(iss){
+//            	for(var i = 0; i < iss.length; i++){
+//            		txtP += 
+//            			iss[i].rule == 'MOBILE_FRIENDLY_RULE_UNSPECIFIED' ? '- Извините, у нас нет описания для правила, которое было нарушено<br />' : 
+//            			iss[i].rule == 'USES_INCOMPATIBLE_PLUGINS' ? '- Используются плагины, несовместимые с мобильными устройствами<br />' : 
+//            			iss[i].rule == 'CONFIGURE_VIEWPORT' ? '- Viewport не указан с помощью мета-тега viewport<br />' : 
+//            			iss[i].rule == 'FIXED_WIDTH_VIEWPORT' ? '- Viewport определен фиксированной шириной<br />' : 
+//            			iss[i].rule == 'SIZE_CONTENT_TO_VIEWPORT' ? '- Содержимое не имеет подходящего размера для viewport<br />' :
+//            			iss[i].rule == 'USE_LEGIBLE_FONT_SIZES' ? '- Размер шрифта слишком мал для удобства чтения на маленьком экране<br />' :
+//            			iss[i].rule == 'TAP_TARGETS_TOO_CLOSE' ? '- Сенсорные элементы слишком близки друг к другу<br />' :'<br />';
+//            	}
+//            }
+// 			th.after('<h5 class="afterPAgespeed">' + txtH5 + '</h5><p class="afterPAgespeed">' + txtP + '</p>');
+//         	WEBSITEADDR += val + ', ';
           
-        }, function(error) {
-          console.error("Execute error", error);
-        });
-  }
-  gapi.load("client");
+//         }, function(error) {
+//           console.error("Execute error", error);
+//           $('.afterPAgespeed').remove();
+//           th.after('<p class="afterPAgespeed">* Произошла ошибка, нажмите кнопку "проверить" снова или перезагрузите страницу!</p>');
+//         });
+       
+//   }
+//   gapi.load("client");
 
-	$('#mobileFliendly').submit(function(e){
-		e.preventDefault();
-		// console.log(this, e, $(this).children('[type="text"]').val());
-		var websiteAddr = $(this).children('[type="text"]').val();
-		var th = $(this);
-		var timerId = '';
-		console.log(websiteAddr);
-		$('.remuve').remove();
-		if(websiteAddr == ''){
-			$('.afterPAgespeed').remove();
-			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
-		} else{
-			loadClient(websiteAddr, th);
-		}
-	});
+// 	$('#mobileFliendly').submit(function(e){
+// 		e.preventDefault();
+		
+// 		var websiteAddr = $(this).children('[type="text"]').val();
+// 		var th = $(this);
+// 		var timerId = '';
+// 		$('.remuve').remove();
+// 		if(websiteAddr == ''){
+// 			$('.afterPAgespeed').remove();
+// 			$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>');
+// 		} else{
+// 			loadClient(websiteAddr, th);
+// 		}
+		
+// 	});
 
-});
+	
+
+// });

@@ -26,9 +26,9 @@
           <h5>Проверьте прямо сейчас свой сайт на скорость загрузки от PageSpeed Insights</h5>
           <form class="adaptive_page__form dark" id="pagespeed">
             <input type="text" name="site" placeholder="Введите адрес вашего сайта">
-            <input class="submit" type="submit">
+            <input class="submit" type="submit" value="Проверить">
           </form>
-          <h5 class="akcent">Получить предложение по оптимизации мобильной версии сайта прямо сейчас</h5><a class="button inner popup-with-form-adaptive">Получить предложение</a>
+          <h5 class="akcent">Получить предложение по оптимизации мобильной версии сайта прямо сейчас</h5><a class="button inner popup-with-form-adaptive" href="#form_modal__adaptive">Получить предложение</a>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
             <p>Телефон сегодня и телефон 5 лет назад — разные вещи. Все больше пользователей применяет мобильные устройства для серфинга по сети. </p>
             <p>Согласно статистическим данным 83% владельцев смартфонов заказывают товары и услуги через планшет или телефон, не прибегая к эксплуатации ноутбуков.</p>
             <p>Оптимизация сайта под мобильные устройства позволит вам вывести бизнес на новый уровень и даст целый ряд преимуществ перед конкурентами.</p>
-            <div class="has_button"><a class="button inner" href="#services">Получить предложение</a></div>
+            <div class="has_button"><a class="button inner popup-with-form-adaptive" href="#form_modal__adaptive"> Получить предложение</a></div>
           </div>
           <div class="has_image"><img src="https://fgmarketing.agency/wp-content/themes/fgmarketing.agency/images/tel.png"></div>
         </div>
@@ -98,42 +98,45 @@
             <p>Вы можете сделать это самостоятельно: воспользуйтесь нашим сервисом или любым из онлайн ресурсов. </p>
             <form class="adaptive_page__form" id="mobileFliendly">
               <input type="text" name="site" placeholder="Проверить сайт на адаптивность прямо сейчас">
-              <input class="submit" type="submit">
+              <input class="submit" type="submit" value="Проверить">
             </form>
             <div class="remuve">
               <p>Чтобы протестировать портал на качество отображения достаточно зайти на него с нескольких версий устройств: iOS, Android, Windows. </p>
               <h5 class="akcent">При проверке мобильной версии сайта наши специалисты используют цифровые технологии разных поколений с разными форматами экранов.</h5>
-            </div><a class="button inner" href="#services">Получить предложение</a>
+            </div><a class="button inner popup-with-form-adaptive" href="#form_modal__adaptive">Получить предложение</a>
           </div>
           <div class="has__screen"><img src="" alt=""></div>
         </div>
       </div>
     </div>
+    <script>var submitted2=false</script>
     <div class="adaptive_block grey_block graph__block sale">
       <div class="wrapper">
         <h2>Как заказать мобильную версию сайта?</h2>
         <h4>  Свяжитесь с нашими специалистами по телефону<br><a class="big" href="tel:+380632206314">+38 (063) 220-63-14</a></h4>
         <p>Конечная стоимость услуги зависит от ваших требований и масштабности сайта.</p>
         <h5 class="akcent">Задайте вопросы о цене и особенностях адаптации сайта при личной беседе с программистами!</h5>
-        <form class="adaptive_page__form big__form">
+        <iframe id="target-modal-form1" name="target-modal-form1" style="display:none;" onload="if(submitted2){}"></iframe>
+        <form class="adaptive_page__form big__form" action="https://docs.google.com/forms/d/e/1FAIpQLSdI02--TvsZnoAjbynyt277cNP-4vMHke5rRGd_P-LeH1ouIQ/formResponse" method="POST" target="target-modal-form1" onsubmit="submitted2=true;">
           <h3>Оставьте свои контакты</h3>
           <p>И мы свяжемся с вами в ближайшее время</p>
           <div class="inp_wrap">
-            <input type="text" placeholder="Ваше имя*">
+            <input type="text" placeholder="Ваше имя*" name="entry.978988230" required>
           </div>
           <div class="inp_wrap">
-            <input type="text" placeholder="Ваше телефон*">
+            <input type="text" placeholder="Ваше телефон*" name="entry.1416367750" required>
           </div>
           <div class="inp_wrap">
-            <input type="text" placeholder="Ваше email*">
+            <input type="text" placeholder="Ваше email*" name="entry.182022662">
           </div>
           <div class="inp_wrap">
-            <input type="text" placeholder="Адрес вашего сайта http://site.com/">
+            <input type="text" placeholder="Адрес вашего сайта http://site.com/" name="entry.766213977">
           </div>
+          <input type="hidden" name="entry.816312878">
           <div class="inp_wrap">
-            <textarea placeholder="Вопрос, пожелания" rows="7"></textarea>
+            <textarea rows="3" placeholder="Ваш вопрос" name="entry.1269152571"></textarea>
           </div>
-          <input class="button inner" type="submit">
+          <input class="button inner" type="submit" value="Отправить заявку">
         </form>
       </div>
     </div>
@@ -167,6 +170,32 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="white-popup-block mfp-hide" id="form_modal__adaptive">
+      <h3>Оставьте заявку</h3>
+      <p>Мы свяжемся с Вами в ближайшее время</p>
+      <iframe id="target-modal-form2" name="target-modal-form2" style="display:none;" onload="if(submitted2){}"></iframe>
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSdI02--TvsZnoAjbynyt277cNP-4vMHke5rRGd_P-LeH1ouIQ/formResponse" method="POST" target="target-modal-form2" onsubmit="submitted2=true;">
+        <div class="form-group">
+          <input class="form-control" id="name" type="text" placeholder="Ваше имя*" name="entry.978988230" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="name" type="tel" placeholder="Ваш телефон*" name="entry.1416367750" required>
+        </div>
+        <div class="form-group hide-group">
+          <input class="form-control" id="email" type="email" placeholder="Ваш Email" name="entry.182022662">
+        </div>
+        <div class="form-group hide-group">
+          <input class="form-control" id="email" type="text" placeholder="Адрес сайта" name="entry.766213977">
+        </div>
+        <input type="hidden" name="entry.816312878">
+        <div class="form-group quastions hide-group">
+          <textarea rows="3" placeholder="Ваш вопрос" name="entry.1269152571"></textarea>
+        </div>
+        <div class="footer__but">
+          <input class="button" type="submit" value="Отправить заявку">
+        </div>
+      </form>
     </div>
     <footer id="contacts">
       <div class="flex-container">
@@ -244,5 +273,6 @@
       <p>Мы свяжемся с Вами в ближайшее время</p>
     </div><script src="https://apis.google.com/js/api.js"></script>
     <script src="js/script.js?ver=0.002"></script>
+    <script>var WEBSITEADDR="",PAGESPEED="";$(document).ready(function(){function e(e,r){return console.log("websiteAddr: ",e,"this: ",r),gapi.client.setApiKey("AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo"),gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest").then(function(){console.log("GAPI client loaded for API"),t(e,r)},function(e){console.error("Error loading GAPI client for API")})}function t(e,t){console.log(t,r),$(".afterPAgespeed").remove();var r='<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>';t.after(r);var s=0,a="";return timerId=setInterval(function(){3==s&&(s=0,a=""),s++,a+=".",$(".afterPAgespeed span").text(a)},500),gapi.client.searchconsole.urlTestingTools.mobileFriendlyTest.run({resource:{url:e,requestScreenshot:!0}}).then(function(r){$(".afterPAgespeed").remove(),setTimeout(function(){clearInterval(timerId)},0),console.log("Response",r);var s="",a="";$(".has__screen img").attr("src","data:image/png;base64,"+r.result.screenshot.data).addClass("active"),s="MOBILE_FRIENDLY"==r.result.mobileFriendliness?"Ваш сайт адаптивен":"Ваш сайт не адаптивен";var n=r.result.mobileFriendlyIssues;if(n)for(var o=0;o<n.length;o++)a+="MOBILE_FRIENDLY_RULE_UNSPECIFIED"==n[o].rule?"- Извините, у нас нет описания для правила, которое было нарушено<br />":"USES_INCOMPATIBLE_PLUGINS"==n[o].rule?"- Используются плагины, несовместимые с мобильными устройствами<br />":"CONFIGURE_VIEWPORT"==n[o].rule?"- Viewport не указан с помощью мета-тега viewport<br />":"FIXED_WIDTH_VIEWPORT"==n[o].rule?"- Viewport определен фиксированной шириной<br />":"SIZE_CONTENT_TO_VIEWPORT"==n[o].rule?"- Содержимое не имеет подходящего размера для viewport<br />":"USE_LEGIBLE_FONT_SIZES"==n[o].rule?"- Размер шрифта слишком мал для удобства чтения на маленьком экране<br />":"TAP_TARGETS_TOO_CLOSE"==n[o].rule?"- Сенсорные элементы слишком близки друг к другу<br />":"<br />";t.after('<h5 class="afterPAgespeed">'+s+'</h5><p class="afterPAgespeed">'+a+"</p>"),WEBSITEADDR+=e+", "},function(e){console.error("Execute error",e),$(".afterPAgespeed").remove(),t.after('<p class="afterPAgespeed">* Произошла ошибка, нажмите кнопку "проверить" снова или перезагрузите страницу!</p>')})}$(".popup-with-form-adaptive").magnificPopup({type:"inline",preloader:!1,focus:"#name",callbacks:{beforeOpen:function(){$(window).width()<700?this.st.focus=!1:this.st.focus="#name"},open:function(){this.currItem.inlineElement.find('[name="entry.816312878"]').val(WEBSITEADDR)},close:function(){}}}),$("#pagespeed").submit(function(e){e.preventDefault();var t=$(this).children('[type="text"]').val(),r="",s=$(this),a="";""==t?($(".afterPAgespeed").remove(),$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>')):$.ajax({url:"https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url="+t+"&strategy=mobile&key=AIzaSyAJFwN_woKl2jmKfZtGXeSzTUYzm0NhhQo",success:function(e){$(".afterPAgespeed").remove();var n=e.ruleGroups.SPEED.score;r='<h5 class="afterPAgespeed">Ваша страница оптимизирована на <span class="akcent">'+n+"%</span></h5>",s.after(r),setTimeout(function(){clearInterval(a)},0),WEBSITEADDR+=t+", ",PAGESPEED=n+"%"},beforeSend:function(e){$(".afterPAgespeed").remove(),r='<h5 class="afterPAgespeed">Информация сейчас загрузится <span></span></h5>',s.after(r);var t=0,n="";a=setInterval(function(){3==t&&(t=0,n=""),t++,n+=".",$(".afterPAgespeed span").text(n)},500)},error:function(e){$(".afterPAgespeed").remove(),r='<p class="afterPAgespeed">* Вы ввели некоректный адрес сайта<br />Если вы уверены что все правильно ввели, обновите страницу </p>',s.after(r)}})}),gapi.load("client"),$("#mobileFliendly").submit(function(t){t.preventDefault();var r=$(this).children('[type="text"]').val(),s=$(this);$(".remuve").remove(),""==r?($(".afterPAgespeed").remove(),$(this).after('<p class="afterPAgespeed">* Поле не должно быть пустым</p>')):e(r,s)}),$("form").on("submit",function(){console.log("done"),$(this).hasClass("adaptive_page__form")||$.magnificPopup.open({items:{src:$("#form_modal_after_submit")},type:"inline"})})});</script>
   </body>
 </html>
