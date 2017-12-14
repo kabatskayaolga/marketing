@@ -253,14 +253,18 @@ $(document).ready(function() {
 	});
 	$('form').on("submit", function() {
 	 	var th = $(this);
-	 
-		$.magnificPopup.open({
-	        items: {
-	            src: $('#form_modal_after_submit')
-	        },
-	        type: 'inline'
-	    });
-	    setTimeout(function(){th.find('input').val('')}, 1000); // Привет, Вася
+	 	if(th.hasClass('adaptive_page__form')){
+
+	 	} else{
+	 		$.magnificPopup.open({
+		        items: {
+		            src: $('#form_modal_after_submit')
+		        },
+		        type: 'inline'
+		    });
+	    	setTimeout(function(){th.find('input').val('')}, 1000); // Привет, Вася
+	 	}
+	
 	   
 
 
