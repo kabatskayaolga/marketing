@@ -1421,7 +1421,8 @@ footer {
   color: white;
   background-position: center;
   position: relative;
-  background-color: #18214c; }
+  background-color: #18214c;
+  transition: 0s color; }
   @media (max-width: 1541px) and (min-width: 700px) {
     .head_block.adaptive_head_block:before {
       position: absolute;
